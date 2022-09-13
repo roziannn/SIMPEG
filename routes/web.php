@@ -24,7 +24,7 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 Route::post('/login', [UserController::class, 'authenticate']);
 
 //Regist source
-Route::get('/add-new-user', [UserController::class, 'add_user'])->middleware('admin');
+Route::get('/add-new-user', [UserController::class, 'add_user']);
 Route::post('/add-new-user', [UserController::class, 'store']);
 
 //logout
