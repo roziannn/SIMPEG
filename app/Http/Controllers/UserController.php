@@ -23,7 +23,7 @@ class UserController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended('/kehadiran');
+            return redirect()->intended('/pegawai.index');
         }
 
         return back()->with('loginError', 'login Failed!');
@@ -53,59 +53,29 @@ class UserController extends Controller
         return redirect('/add-new-user');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function delete($id){
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect('/add-new-user')->with('successDelete', 'User has been deleted!');
     }
 
+    public function edit(Request $request, $id){
+        if($request->isMethod('POST')){
+            $user = $request->all();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+            User::where(['id'=>$id])->update(['nama'=>$user['nama'],'nip'=>$user['nip'],'roles'=>$user['roles']]);
+
+            return redirect()->back()->with('update_success', 'Update data berhasil!');
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    public function logout(Request $request){
+        Auth::logout();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect('/login');
     }
 }

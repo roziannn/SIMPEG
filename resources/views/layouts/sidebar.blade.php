@@ -24,55 +24,48 @@
         <li class="header">MAIN NAVIGATION</li>
         <li>
           <a href="kehadiran">
-            <i class="fa fa-users"></i> <span>Data Kehadiran</span>
+            <i class="fa fa-heartbeat"></i> <span>Siaga Covid-19</span>
+          </a>
+        </li>
+        <li>
+          <a href="/data-pegawai">
+            <i class="fa fa-users"></i> <span>Pegawai</span>
           </a>
         </li>
         <li>
           <a href="cuti">
-            <i class="fa fa-th"></i> <span>Data Cuti</span>
+            <i class="fa fa-book"></i> <span>Cuti</span>
           </a>
         </li>
         <li>
           <a href="absen-masuk">
-            <i class="fa fa-th"></i> <span>Belum Absen Masuk</span>
-          </a>
-        </li>
-        <li>
-          <a href="absen-pulang">
-            <i class="fa fa-th"></i> <span>Belum Absen Pulang</span>
-          </a>
-        </li>
-        <li>
-          <a href="terlambat-harian">
-            <i class="fa fa-th"></i> <span>Data Terlambat Harian</span>
+            <i class="fa fa-line-chart"></i> <span>Statistik</span>
           </a>
         </li>
         <li class="header">FILES</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-folder"></i> <span>Rekapitulasi</span>
+            <i class="fa fa-folder"></i> <span>Layanan Pegawai</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="rekapTAP"><i class="fa fa-circle-o"></i>Tidak Absen Pulang</a></li>
-            <li><a href="rekapTAM"><i class="fa fa-circle-o"></i>Terlambat Masuk</a></li>
-            <li><a href="rekapUnit"><i class="fa fa-circle-o"></i>Terlambat Unit Kerja</a></li>
+            <li><a href="rekapTAP"><i class="fa fa-file-text"></i>Pengajuan Cuti</a></li>
+            <li><a href="rekapTAM"><i class="fa fa-info "></i>Pengaduan</a></li>
           </ul>
         </li>
         {{-- @if(Auth::user()->roles == "ADMIN") --}}
         <li class="header">DASHBOARD</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-User"></i> <span>Users</span>
+            <i class="fa fa-user"></i> <span>Users</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="all-user"><i class="fa fa-circle-o"></i>All Users</a></li>
-            <li><a href="add-new-user"><i class="fa fa-circle-o"></i> Add New</a></li>
+            <li><a href="add-new-user"><i class="fa fa-circle-o"></i> Tambah Baru</a></li>
           </ul>
         </li> 
       </ul>  

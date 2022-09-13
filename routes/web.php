@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PegawaiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,13 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 Route::post('/login', [UserController::class, 'authenticate']);
 
 //Regist source
-Route::get('/add-new-user', [UserController::class, 'add_user'])->middleware('guest');
+Route::get('/add-new-user', [UserController::class, 'add_user'])->middleware('admin');
 Route::post('/add-new-user', [UserController::class, 'store']);
+
+//logout
+Route::post('/logout', [UserController::class, 'logout']);
+
+//pegawai
+Route::get('/data-pegawai', [PegawaiController::class, 'index']);
+Route::get('/add-data-pegawai', [PegawaiController::class, 'add_data_pegawai']);
 

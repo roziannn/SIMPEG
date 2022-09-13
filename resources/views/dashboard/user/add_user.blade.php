@@ -1,5 +1,5 @@
 @extends('layouts.master')
-<link rel="icon" href="img/jabar.png">
+<link rel="icon" href="">
 
 @section('title')
     Add New
