@@ -6,7 +6,7 @@
           <img src="AdminLte-2/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{ auth()->user()->nama }}</p>
+          {{-- <p>{{ auth()->user()->nama }}</p> --}}
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -61,7 +61,7 @@
             <li><a href="rekapUnit"><i class="fa fa-circle-o"></i>Terlambat Unit Kerja</a></li>
           </ul>
         </li>
-        @if(Auth::user()->roles == "ADMIN")
+        {{-- @if(Auth::user()->roles == "ADMIN") --}}
         <li class="header">DASHBOARD</li>
         <li class="treeview">
           <a href="#">
@@ -76,7 +76,7 @@
           </ul>
         </li> 
       </ul>  
-      @endif
+      {{-- @endif --}}
     </section>
   </aside>
 

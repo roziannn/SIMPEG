@@ -23,7 +23,7 @@
           <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="AdminLte-2/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                <span class="hidden-xs">{{ auth()->user()->nama }}</span>
+                {{-- <span class="hidden-xs">{{ auth()->user()->nama }}</span> --}}
               </a>
               <ul class="dropdown-menu">
                 <!-- Menu Footer-->
