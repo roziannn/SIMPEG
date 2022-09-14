@@ -18,6 +18,16 @@
                         class="fa fa-arrow-circle-o-left"></i> Kembali ke Data Pegawai</a>
                     </div>
                 </div>
+
+                @if(session()->has('success'))
+                <div class="box-body">
+                  <div class="alert alert-success alert-dismissible" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  </div>
+                </div>
+                @endif
+
                 <form action="/store-data-pegawai" method="POST">
                     @csrf
                     <div class="box-body">
@@ -46,16 +56,12 @@
                                     <label for="unitkerja_nama">Unit Kerja </label>
                                     <select class="form-control input-sm required" name="unitkerja_nama" id="unitkerja_nama">
                                         <option value="">Pilih Unit Kerja </option>
-                                        <option value="1">TIDAK / BELUM SEKOLAH</option>
-                                        <option value="2">BELUM TAMAT SD/SEDERAJAT</option>
-                                        <option value="3">TAMAT SD / SEDERAJAT</option>
-                                        <option value="4">SLTP/SEDERAJAT</option>
-                                        <option value="5">SLTA / SEDERAJAT</option>
-                                        <option value="6">DIPLOMA I / II</option>
-                                        <option value="7">AKADEMI/ DIPLOMA III/S. MUDA</option>
-                                        <option value="8">DIPLOMA IV/ STRATA I</option>
-                                        <option value="9">STRATA II</option>
-                                        <option value="10">STRATA III</option>
+                                        <option value="SEKRETARIAT">SEKRETARIAT</option>
+                                        <option value="BIDANG E-GOVERMENT">BIDANG E-GOVERMENT</option>
+                                        <option value="BIDANG APLIKAS INFORMATIKA">BIDANG APLIKAS INFORMATIKA</option>
+                                        <option value="UPTD PUSAT LAYANAN DIGITAL DATA">UPTD PUSAT LAYANAN DIGITAL DATA</option>
+                                        <option value="BIDANG STATISTIK">BIDANG STATISTIK</option>
+                                        <option value="BIDANG PERSANDIAN DAN KEAMANAN INFORMASI">BIDANG PERSANDIAN DAN KEAMANAN INFORMASI</option>
                                     </select>
                                 </div>
                             </div>
@@ -86,16 +92,12 @@
                                     <label for="agama">Agama </label>
                                     <select class="form-control input-sm required" id="agama" name="agama">
                                         <option value="">Pilih Agama </option>
-                                        <option value="1">TIDAK / BELUM SEKOLAH</option>
-                                        <option value="2">BELUM TAMAT SD/SEDERAJAT</option>
-                                        <option value="3">TAMAT SD / SEDERAJAT</option>
-                                        <option value="4">SLTP/SEDERAJAT</option>
-                                        <option value="5">SLTA / SEDERAJAT</option>
-                                        <option value="6">DIPLOMA I / II</option>
-                                        <option value="7">AKADEMI/ DIPLOMA III/S. MUDA</option>
-                                        <option value="8">DIPLOMA IV/ STRATA I</option>
-                                        <option value="9">STRATA II</option>
-                                        <option value="10">STRATA III</option>
+                                        <option value="ISLAM">ISLAM</option>
+                                        <option value="KRISTEN">KRISTEN</option>
+                                        <option value="KHATOLIK">KHATOLIK</option>
+                                        <option value="HINDU">HINDU</option>
+                                        <option value="BUDHA">BUDHA</option>
+                                        <option value="KEPERCAYAAN PADA TUHAN YME/LAINNYA">KEPERCAYAAN PADA TUHAN YME/LAINNYA</option>
                                     </select>
                                 </div>
                             </div>
@@ -104,8 +106,8 @@
                                     <label for="gender">Jenis Kelamin </label>
                                     <select class="form-control input-sm required" name="gender" id="gender">
                                         <option value="">Pilih Jenis Kelamin </option>
-                                        <option value="1">LAKI-LAKI</option>
-                                        <option value="2">PEREMPUAN</option>
+                                        <option value="LAKI-LAKI">LAKI-LAKI</option>
+                                        <option value="PEREMPUAN">PEREMPUAN</option>
                                     </select>
                                 </div>
                             </div>

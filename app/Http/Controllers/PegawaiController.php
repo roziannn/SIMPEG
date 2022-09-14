@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pegawai;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PegawaiController extends Controller
 {
@@ -19,6 +20,16 @@ class PegawaiController extends Controller
       
        Pegawai::create($request->all());
 
-       return view('/pegawai.index');
+       $request->accepts('session');
+       session()->flash('success', 'Berhasil menambahkan data!');
+
+       return view('/pegawai.add');
+    }
+
+    public function data_pegawai(){
+
+        $data = DB::select("SELECT * FROM pegawais");
+
+        return view('pegawai.index', ['data'=>$data]);
     }
 }

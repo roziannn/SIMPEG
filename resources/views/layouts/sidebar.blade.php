@@ -65,7 +65,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="add-new-user"><i class="fa fa-circle-o"></i> Tambah Baru</a></li>
+            <li><a href="add-new-user"><i class="fa fa-plus"></i> Tambah Baru</a></li>
           </ul>
         </li> 
       </ul>  

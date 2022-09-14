@@ -32,6 +32,8 @@ Route::post('/logout', [UserController::class, 'logout']);
 
 //pegawai
 Route::get('/data-pegawai', [PegawaiController::class, 'index']);
+Route::get('/data-pegawai', [PegawaiController::class, 'data_pegawai']);
+
 Route::get('/add-data-pegawai', [PegawaiController::class, 'add_data_pegawai']);
 
 Route::post('/store-data-pegawai', [PegawaiController::class, 'store_add_data']);
