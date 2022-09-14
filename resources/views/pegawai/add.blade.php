@@ -90,7 +90,7 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="agama">Agama </label>
-                                    <select class="form-control input-sm required" id="agama" name="agama">
+                                    <select class="form-control input-sm required" id="agama" name="agama" required>
                                         <option value="">Pilih Agama </option>
                                         <option value="ISLAM">ISLAM</option>
                                         <option value="KRISTEN">KRISTEN</option>
