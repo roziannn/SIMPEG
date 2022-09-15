@@ -27,15 +27,22 @@
               </a>
               <ul class="dropdown-menu">
                 <!-- Menu Footer-->
+                <li class="user-header">
+                  <img src="{{ asset('AdminLte-2/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+                  <p>
+                    <span class="hidden-xs">{{ auth()->user()->nama }}</span>
+                  <small>{{ auth()->user()->nip }}</small>
+                  </p>
+                </li>
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Ubah Kata Sandi</a>
+                    <a href="#" class="btn btn-default btn-flat btn-xs">Ubah Kata Sandi</a>
                   </div>
                   <div class="pull-right">
                     <form action="/logout" method="post">
                       @csrf
                       
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-sign-out" ></i> <span>Logout</span></button>
+                        <button class="btn btn-primary btn-flat btn-xs" type="submit"><i class="fa fa-sign-out" ></i> <span>Logout</span></button>
                         
                     </form>
                   </div>

@@ -17,12 +17,6 @@
                         <a href="/data-pegawai" class="btn btn-social btn-flat btn-warning btn-xs"><i
                         class="fa fa-arrow-circle-o-left"></i> Kembali ke Data Pegawai</a>
                     </div>
-                    <div class="btn-group btn-group-vertical">
-                        <a href="add-data-pegawai" class="btn btn-social btn-flat btn-success btn-xs"><i
-                                class="fa fa-edit"></i> Edit Data Pegawai
-                        </a>
-                    </div>
-                    
                 </div>
                 
                 <div class="box-body">

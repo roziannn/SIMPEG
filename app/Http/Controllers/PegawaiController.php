@@ -40,6 +40,31 @@ class PegawaiController extends Controller
         return view('pegawai.show', compact('pegawai'));
     }
 
+    public function edit($id){
+       $edit = Pegawai::find($id);
+
+       return view('pegawai.edit', compact('edit'));
+    }
+
+    public function update(Request $request, $id){
+        Pegawai::where('id', $id)->update([
+            'nip'=> $request->nip,
+            'nama'=> $request->nama,
+            'unitkerja_nama'=> $request->unitkerja_nama,
+            'jabatan'=> $request->jabatan,
+            'status_pegawai'=> $request->status_pegawai,
+            'no_telp'=> $request->no_telp,
+            'agama'=> $request->agama,
+            'gender'=> $request->gender,
+            'alamat'=> $request->alamat,
+        ]);
+
+        $request->accepts('session');
+        session()->flash('success', 'Berhasil menambahkan user!');
+
+        return redirect()->back();
+    }
+
     public function delete($id){
         $user = Pegawai::find($id);
         $user->delete();

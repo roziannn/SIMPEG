@@ -67,7 +67,7 @@
                                                                         class="fa fa-list-ol"></i>Lihat Detail</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#" 
+                                                                <a href="{{ url('edit-pegawai/' . $item->id) }}" 
                                                                     class="btn btn-social btn-flat btn-block btn-xs"><i
                                                                         class="fa fa-edit"></i>Ubah Data</a>
                                                             </li>

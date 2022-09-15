@@ -15,25 +15,23 @@
                 <div class="box-header with-border">
                     <div class="btn-group btn-group-vertical">
                         <a href="/data-pegawai" class="btn btn-social btn-flat btn-warning btn-xs"><i
-                        class="fa fa-arrow-circle-o-left"></i> Kembali ke Data Pegawai</a>
+                                class="fa fa-arrow-circle-o-left"></i> Kembali ke Data Pegawai</a>
                     </div>
                 </div>
 
-                @if(session()->has('success'))
-                <div class="box-body">
-                  <div class="alert alert-success alert-dismissible" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  </div>
-                </div>
+                @if (session()->has('success'))
+                    <div class="box-body">
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        </div>
+                    </div>
                 @endif
 
-                @foreach ($collection as $item)
-                    
-                @endforeach
-                <form action="{{ url('edit'. $data->id) }}" method="POST">
-                    @csrf
-                    <div class="box-body">
+
+                <div class="box-body">
+                    <form action="{{ url('edit-pegawai/' . $edit->id) }}" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group subtitle_head">
@@ -44,90 +42,99 @@
                                 <div class="form-group">
                                     <label for="nip">NIP</label>
                                     <input id="nip" name="nip" class="form-control input-sm required nik"
-                                        type="text" placeholder="Nomor NIP" value="">
+                                        type="text" placeholder="Nomor NIP" value="{{ $edit->nip }}">
                                 </div>
                             </div>
                             <div class="col-sm-8">
                                 <div class="form-group">
                                     <label for="nama">Nama Lengkap <code> (Tanpa Gelar) </code> </label>
                                     <input id="nama" name="nama" class="form-control input-sm required nama"
-                                    maxlength="100" type="text" placeholder="Nama Lengkap" value="">
+                                        maxlength="100" type="text" placeholder="Nama Lengkap"
+                                        value="{{ $edit->nama }}">
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="unitkerja_nama">Unit Kerja </label>
-                                    <select class="form-control input-sm required" name="unitkerja_nama" id="unitkerja_nama">
+                                    <select class="form-control input-sm required" name="unitkerja_nama" id="unitkerja_nama"
+                                        value="{{ $edit->unitkerja_nama }}">
                                         <option value="">Pilih Unit Kerja </option>
-                                        <option value="SEKRETARIAT">SEKRETARIAT</option>
-                                        <option value="BIDANG E-GOVERMENT">BIDANG E-GOVERMENT</option>
-                                        <option value="BIDANG APLIKAS INFORMATIKA">BIDANG APLIKAS INFORMATIKA</option>
-                                        <option value="UPTD PUSAT LAYANAN DIGITAL DATA">UPTD PUSAT LAYANAN DIGITAL DATA</option>
-                                        <option value="BIDANG STATISTIK">BIDANG STATISTIK</option>
-                                        <option value="BIDANG PERSANDIAN DAN KEAMANAN INFORMASI">BIDANG PERSANDIAN DAN KEAMANAN INFORMASI</option>
+                                        <option value="SEKRETARIAT"{{ $edit->unitkerja_nama == 'SEKRETARIAT' ? 'selected' : '' }}>SEKRETARIAT</option>
+                                        <option value="BIDANG E-GOVERMENT"{{ $edit->unitkerja_nama == 'BIDANG E-GOVERMENT' ? 'selected' : '' }}>BIDANG E-GOVERMENT</option>
+                                        <option value="BIDANG APLIKASI INFORMATIKA"{{ $edit->unitkerja_nama == 'BIDANG APLIKASI INFORMATIKA' ? 'selected' : '' }}>BIDANG APLIKAS INFORMATIKA</option>
+                                        <option value="UPTD PUSAT LAYANAN DIGITAL DATA"{{ $edit->unitkerja_nama == 'UPTD PUSAT LAYANAN DIGITAL DATA' ? 'selected' : '' }}>UPTD PUSAT LAYANAN DIGITAL DATA
+                                        </option>
+                                        <option value="BIDANG STATISTIK"{{ $edit->unitkerja_nama == 'BIDANG STATISTIKA' ? 'selected' : '' }}>BIDANG STATISTIK</option>
+                                        <option value="BIDANG PERSANDIAN DAN KEAMANAN INFORMASI"{{ $edit->unitkerja_nama == 'BIDANG PERSANDIAN DAN KEAMANAN INFORMASI' ? 'selected' : '' }}>BIDANG PERSANDIAN DAN
+                                            KEAMANAN INFORMASI</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    <label for="jabatan">Jabatan <code id="tampil_nik" style="display: none;"> (Sementara)
-                                        </code></label>
+                                    <label for="jabatan">Jabatan </label>
                                     <input id="jabatan" name="jabatan" class="form-control input-sm required nik"
-                                        type="text" placeholder="Jabatan" value="">
+                                        type="text" placeholder="Jabatan" value="{{ $edit->jabatan }}">
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="status_pegawai">Status Pegawai </label>
-                                    <input id="status_pegawai" name="status_pegawai" class="form-control input-sm required nik"
-                                        type="text" placeholder="Status Pegawai" value="">
+                                    <input id="status_pegawai" name="status_pegawai" class="form-control input-sm"
+                                        type="text" placeholder="Status Pegawai" value="{{ $edit->status_pegawai }}"
+                                        required>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="no_telp">Nomor Telepon</label>
-                                    <input id="no_telp" name="no_telp" class="form-control input-sm required nik"
-                                        type="text" placeholder="Nomor Telepon" value="">
+                                    <input id="no_telp" name="no_telp" class="form-control input-sm" type="text"
+                                        placeholder="Nomor Telepon" value="{{ $edit->no_telp }}" required>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="agama">Agama </label>
-                                    <select class="form-control input-sm required" id="agama" name="agama" required>
+                                    <select class="form-control input-sm required" id="agama" name="agama" value="{{ $edit->agama }}" required>
                                         <option value="">Pilih Agama </option>
-                                        <option value="ISLAM">ISLAM</option>
-                                        <option value="KRISTEN">KRISTEN</option>
-                                        <option value="KHATOLIK">KHATOLIK</option>
-                                        <option value="HINDU">HINDU</option>
-                                        <option value="BUDHA">BUDHA</option>
-                                        <option value="KEPERCAYAAN PADA TUHAN YME/LAINNYA">KEPERCAYAAN PADA TUHAN YME/LAINNYA</option>
+                                        <option value="ISLAM"{{ $edit->agama == 'ISLAM' ? 'selected' : '' }}>ISLAM</option>
+                                        <option value="KRISTEN"{{ $edit->agama == 'KRISTEN' ? 'selected' : '' }}>KRISTEN</option>
+                                        <option value="KHATOLIK"{{ $edit->agama == 'KATHOLIK' ? 'selected' : '' }}>KHATOLIK</option>
+                                        <option value="HINDU"{{ $edit->agama == 'HINDU' ? 'selected' : '' }}>HINDU</option>
+                                        <option value="BUDHA"{{ $edit->agama == 'BUDHA' ? 'selected' : '' }}>BUDHA</option>
+                                        <option value="KEPERCAYAAN PADA TUHAN YME/LAINNYA"{{ $edit->agama == 'KEPERCAYAAN PADA TUHAN YME/LAINNYA' ? 'selected' : '' }}>KEPERCAYAAN PADA TUHAN
+                                            YME/LAINNYA</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="gender">Jenis Kelamin </label>
-                                    <select class="form-control input-sm required" name="gender" id="gender">
+                                    <select class="form-control input-sm" name="gender" id="gender"
+                                        value="{{ $edit->gender }}" required>
                                         <option value="">Pilih Jenis Kelamin </option>
-                                        <option value="LAKI-LAKI">LAKI-LAKI</option>
-                                        <option value="PEREMPUAN">PEREMPUAN</option>
+                                        <option value="LAKI-LAKI"{{ $edit->gender == 'LAKI-LAKI' ? 'selected' : '' }}>
+                                            LAKI-LAKI</option>
+                                        <option value="PEREMPUAN"{{ $edit->gender == 'PEREMPUAN' ? 'selected' : '' }}>
+                                            PEREMPUAN</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-sm-8">
                                 <div class="form-group">
                                     <label for="alamat">Alamat</label>
-                                    <textarea id="alamat" name="alamat" class="form-control input-sm" rows="3" placeholder="Alamat Pegawai"></textarea>
+                                    <textarea id="alamat" name="alamat" class="form-control input-sm" rows="3" placeholder="Alamat Pegawai">{{ $edit->alamat }}</textarea>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="box-footer">
-                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm"><i class="fa fa-times"></i>
-                            Batal</button>
-                        <button type="submit" class="btn btn-social btn-flat btn-info btn-sm pull-right"><i
+                </div>
+                <div class="box-footer">
+                    <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm"><i class="fa fa-times"></i>
+                        Batal</button>
+                    <button type="submit" class="btn btn-social btn-flat btn-info btn-sm pull-right"><i
                             class="fa fa-check"></i> Simpan</button>
-                    </div>
+                </div>
+
                 </form>
             </div>
         </div>

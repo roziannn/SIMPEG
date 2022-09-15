@@ -35,6 +35,9 @@ Route::get('/data-pegawai', [PegawaiController::class, 'index'])->middleware('au
 Route::get('/data-pegawai', [PegawaiController::class, 'data_pegawai'])->middleware('auth');
 Route::get('/detail-pegawai/{id}', [PegawaiController::class, 'show']);
 
+Route::match(['get', 'post'], '/edit-pegawai/{id}', [PegawaiController::class,'edit']);
+Route::post('/edit-pegawai/{id}', [PegawaiController::class,'update']);
+
 
 Route::get('/add-data-pegawai', [PegawaiController::class, 'add_data_pegawai']);
 Route::post('/store-data-pegawai', [PegawaiController::class, 'store_add_data']);
