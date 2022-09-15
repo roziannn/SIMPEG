@@ -31,11 +31,18 @@ Route::post('/add-new-user', [UserController::class, 'store']);
 Route::post('/logout', [UserController::class, 'logout']);
 
 //pegawai
-Route::get('/data-pegawai', [PegawaiController::class, 'index']);
-Route::get('/data-pegawai', [PegawaiController::class, 'data_pegawai']);
+Route::get('/data-pegawai', [PegawaiController::class, 'index'])->middleware('auth');
+Route::get('/data-pegawai', [PegawaiController::class, 'data_pegawai'])->middleware('auth');
+Route::get('/detail-pegawai/{id}', [PegawaiController::class, 'show']);
+
 
 Route::get('/add-data-pegawai', [PegawaiController::class, 'add_data_pegawai']);
-
 Route::post('/store-data-pegawai', [PegawaiController::class, 'store_add_data']);
+Route::get('/delete{nip}', [PegawaiController::class, 'delete']);
+
+//user
+Route::get('/delete{id}', [UserController::class, 'delete']);
+Route::match(['get', 'post'], '/edit{id}', [UserController::class,'edit']);
+
 
 

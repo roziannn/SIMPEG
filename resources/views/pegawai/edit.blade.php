@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Biodata Pegawai
+    Edit Biodata Pegawai
 @endsection
 
 @push('css')
@@ -28,7 +28,10 @@
                 </div>
                 @endif
 
-                <form action="/store-data-pegawai" method="POST">
+                @foreach ($collection as $item)
+                    
+                @endforeach
+                <form action="{{ url('edit'. $data->id) }}" method="POST">
                     @csrf
                     <div class="box-body">
                         <div class="row">
@@ -135,6 +138,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-@endpush

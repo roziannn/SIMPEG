@@ -11,6 +11,15 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
+            {{-- alert data berhasil terhapus --}}
+            @if (session()->has('successDelete'))
+                <div class="box-body">
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        {{ session('successDelete') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    </div>
+                </div>
+            @endif
             <div class="box box-info">
                 <div class="box-header with-border">
                     <div class="btn-group btn-group-vertical">
@@ -53,19 +62,21 @@
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li>
-                                                                <a href="#"
+                                                                <a href="{{ url('detail-pegawai/' . $item->id) }}"
                                                                     class="btn btn-social btn-flat btn-block btn-xs"><i
                                                                         class="fa fa-list-ol"></i>Lihat Detail</a>
                                                             </li>
                                                             <li>
-                                                                <a href="#"
+                                                                <a href="#" 
                                                                     class="btn btn-social btn-flat btn-block btn-xs"><i
                                                                         class="fa fa-edit"></i>Ubah Data</a>
                                                             </li>
                                                             <li>
                                                                 <a href="#"
-                                                                    class="btn btn-social btn-flat btn-block btn-xs"><i
-                                                                        class="fa fa-trash"></i>Hapus Data</a>
+                                                                    class="btn btn-social btn-flat btn-block btn-xs"data-toggle="modal"
+                                                                    data-target="#modal-danger{{ $item->id }}"><i
+                                                                        class="fa fa-trash"></i>Hapus Data
+                                                                </a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -89,12 +100,39 @@
                 </div>
             </div>
         </div>
+
+        {{-- danger modal --}}
+        @foreach ($data as $item)
+            <div class="modal modal-danger fade" id="modal-danger{{ $item->id }}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Konfirmasi</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ url('/delete' . $item->id) }}" method="GET">
+                                {{ csrf_field() }}
+                                <p>Yakin ingin menghapus data?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline">Hapus</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 
     <style>
-        .table, .sidebar {
+        .table,
+        .sidebar {
             font-size: 13px;
         }
+
         .table {
             text-align: center;
         }

@@ -34,23 +34,23 @@
         <div class="box-body">
           <div class="form-group">
             <label for="nip">NIP</label>
-            <input type="nip" name="nip" class="form-control" id="nip" placeholder="NIP">
+            <input type="nip" name="nip" class="form-control input-sm" id="nip" placeholder="NIP">
           </div>
           <div class="form-group">
             <label for="nama">Nama Lengkap</label>
-            <input type="nama" name="nama" class="form-control" id="nama" placeholder="Nama Lengkap">
+            <input type="nama" name="nama" class="form-control input-sm" id="nama" placeholder="Nama Lengkap">
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+            <input type="email" name="email" class="form-control input-sm" id="email" placeholder="Email">
           </div>
           <div class="form-group">
             <label for="password">Password</label>
-            <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+            <input type="password" name="password" class="form-control input-sm" id="password" placeholder="Password">
 
             </div>
             <div class="check">
-              <input type="checkbox" onclick="myFunction()"> Show Password
+              <input type="checkbox" onclick="myFunction()"> Lihat Password
             </div>
             <script>
             function myFunction() {
@@ -65,7 +65,8 @@
         </div>
 
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary">Buat Akun Baru</button>
+          <button type="reset" class="btn btn-social btn-flat btn-danger btn-xs"><i class="fa fa-times"></i> Batal</button>
+          <button type="submit" class="btn btn-social btn-flat btn-info btn-xs pull-right"><i class="fa fa-check"></i>Buat Akun Baru</button>
         </div>
       </form>
     </div>
@@ -94,7 +95,7 @@
               <th scope="col">Nama</th>
               <th scope="col">NIP</th>
               <th scope="col">Hak Akses</th>
-              <th scope="col"></th>
+              <th scope="col">Aksi</th>
             </tr>
           </thead>
 
@@ -119,6 +120,12 @@
               </tr>
             @endforeach
           </tbody>
+          <style>
+            thead, tbody, th{
+              font-size: 14px;
+              text-align: center;
+            }
+          </style>
         </table>
       </div>
     </div>
@@ -193,5 +200,6 @@
     </div>
   </div>
   @endforeach
+  
 </div>
 @endsection

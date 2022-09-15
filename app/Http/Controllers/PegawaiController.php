@@ -32,4 +32,20 @@ class PegawaiController extends Controller
 
         return view('pegawai.index', ['data'=>$data]);
     }
+
+    public function show($id){
+        
+        $pegawai = Pegawai::find($id);
+
+        return view('pegawai.show', compact('pegawai'));
+    }
+
+    public function delete($id){
+        $user = Pegawai::find($id);
+        $user->delete();
+
+        return redirect('/data-pegawai')->with('successDelete', 'Data has been deleted!');
+    }
+
+   
 }

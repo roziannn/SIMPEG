@@ -23,7 +23,7 @@ class UserController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended('/pegawai.index');
+            return redirect()->intended('/data-pegawai');
         }
 
         return back()->with('loginError', 'login Failed!');
