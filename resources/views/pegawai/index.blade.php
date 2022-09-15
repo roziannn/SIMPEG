@@ -129,7 +129,7 @@
 
     <style>
         .table,
-        .sidebar {
+        .sidebar, .pagination {
             font-size: 13px;
         }
 
