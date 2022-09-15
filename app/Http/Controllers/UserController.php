@@ -23,10 +23,14 @@ class UserController extends Controller
 
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended('/data-pegawai');
+            return redirect()->intended('/home-simpeg');
         }
 
         return back()->with('loginError', 'login Failed!');
+    }
+
+    public function widget(){
+        return view('dashboard.index');
     }
 
     public function add_user(){

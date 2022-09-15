@@ -24,6 +24,11 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li>
+          <a href="/home-simpeg">
+            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+          </a>
+        </li>
+        <li>
           <a href="kehadiran">
             <i class="fa fa-heartbeat"></i> <span>Siaga Covid-19</span>
           </a>
@@ -34,7 +39,7 @@
           </a>
         </li>
         <li>
-          <a href="cuti">
+          <a href="/data-cuti">
             <i class="fa fa-book"></i> <span>Cuti</span>
           </a>
         </li>
@@ -43,7 +48,7 @@
             <i class="fa fa-line-chart"></i> <span>Statistik</span>
           </a>
         </li>
-        <li class="header">FILES</li>
+        {{-- <li class="header">FILES</li> --}}
         <li class="treeview">
           <a href="#">
             <i class="fa fa-folder"></i> <span>Layanan Pegawai</span>
@@ -57,16 +62,15 @@
           </ul>
         </li>
         {{-- @if(Auth::user()->roles == "ADMIN") --}}
-        <li class="header">DASHBOARD</li>
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-user"></i> <span>Users</span>
+            <i class="fa fa-gear"></i> <span>Pengaturan</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="add-new-user"><i class="fa fa-plus"></i> Tambah Baru</a></li>
+            <li><a href="add-new-user"><i class="fa fa-user"></i> Pengguna</a></li>
           </ul>
         </li> 
       </ul>  

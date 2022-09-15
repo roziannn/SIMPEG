@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CutiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PegawaiController;
@@ -46,6 +47,11 @@ Route::get('/delete{nip}', [PegawaiController::class, 'delete']);
 //user
 Route::get('/delete{id}', [UserController::class, 'delete']);
 Route::match(['get', 'post'], '/edit{id}', [UserController::class,'edit']);
+
+//cuti
+Route::get('/data-cuti', [CutiController::class, 'index']);
+
+Route::get('/home-simpeg', [UserController::class,'widget']);
 
 
 
