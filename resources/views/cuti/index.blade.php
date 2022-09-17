@@ -49,6 +49,7 @@
                             </thead>
                             <tbody>
                                 @php $i=1 @endphp
+                                @foreach ( $data as $item )
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>
@@ -74,14 +75,18 @@
                                                 </ul>
                                             </div>
                                         </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ $item->nama }}</td>
+                                        <td>{{ $item->jabatan }}</td>
+                                        <td>{{ $item->unitkerja_nama }}</td>
+                                        <td>{{ $item->jenis_cuti }}</td>
+                                        <td>{{ $item->tgl_mulai }}</td>
+                                        <td>{{ $item->tgl_selesai }}</td>
+                                        <td>{{ $item->lama_terbilang }}</td>
+                                        <td>{{ $item->uraian }}</td>
+                                        <td>{{ $item->tgl_pengajuan }}</td>
+                                        <td>{{ $item->status }}</td>
                                     </tr>
+                                    @endforeach
                             </tbody>
                         </table>
                     </div>

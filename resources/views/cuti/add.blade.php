@@ -27,22 +27,32 @@
                 class="btn btn-social btn-flat btn-info btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"
                 title="Kembali Ke Daftar Program Bantuan"><i class="fa fa-arrow-circle-o-left"></i> Kembali Ke Data Cuti</a>
         </div>
+
+        @if (session()->has('success'))
+            <div class="box-body">
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                </div>
+            </div>
+        @endif
+
         <form action="/store-data-cuti" method="POST" enctype="multipart/form-data" class="form-horizontal">
             @csrf
             <div class="box-body">
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="nama">Nama</label>
                     <div class="col-sm-4">
-                        <input name="nama" class="form-control input-sm required" maxlength="100"
-                            placeholder="Nama" id="nama" type="text">
+                        <input name="nama" class="form-control input-sm required" maxlength="100" placeholder="Nama"
+                            id="nama" type="text">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="nama">Jabatan</label>
                     <div class="col-sm-3">
-                        <input name="jabatan" class="form-control input-sm required" maxlength="100"
-                            placeholder="Jabatan" id="jabatan" type="text">
+                        <input name="jabatan" class="form-control input-sm required" maxlength="100" placeholder="Jabatan"
+                            id="jabatan" type="text">
                     </div>
                 </div>
                 <div class="form-group">
@@ -52,7 +62,7 @@
                             <option value="">Pilih Unit Kerja </option>
                             <option value="SEKRETARIAT">SEKRETARIAT</option>
                             <option value="BIDANG E-GOVERMENT">BIDANG E-GOVERMENT</option>
-                            <option value="BIDANG APLIKAS INFORMATIKA">BIDANG APLIKAS INFORMATIKA</option>
+                            <option value="BIDANG APLIKASI INFORMATIKA">BIDANG APLIKASI INFORMATIKA</option>
                             <option value="UPTD PUSAT LAYANAN DIGITAL DATA">UPTD PUSAT LAYANAN DIGITAL DATA</option>
                             <option value="BIDANG STATISTIK">BIDANG STATISTIK</option>
                             <option value="BIDANG PERSANDIAN DAN KEAMANAN INFORMASI">BIDANG PERSANDIAN DAN KEAMANAN
@@ -65,21 +75,21 @@
                     <div class="col-sm-3">
                         <select class="form-control input-sm required" name="jenis_cuti" id="jenis_cuti">
                             <option value="">Pilih Jenis Cuti </option>
-                            <option value="1">TAHUNAN</option>
-                            <option value="2">BESAR</option>
-                            <option value="3">SAKIT</option>
-                            <option value="4">MELAHIRKAN</option>
-                            <option value="5">BERSAMA</option>
-                            <option value="6">KARENA ALASAN PENTING</option>
-                            <option value="7">DILUAR TANGGUNGAN NEGARA</option>
+                            <option value="TAHUNAN">TAHUNAN</option>
+                            <option value="BESAR">BESAR</option>
+                            <option value="SAKIT">SAKIT</option>
+                            <option value="MELAHIRKAN">MELAHIRKAN</option>
+                            <option value="BERSAMA">BERSAMA</option>
+                            <option value="KARENA ALASAN PENTING">KARENA ALASAN PENTING</option>
+                            <option value="DILUAR TANGGUNGAN NEGARA">DILUAR TANGGUNGAN NEGARA</option>
                         </select>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="lama_terbilang">Lama Terbilang</label>
                     <div class="col-sm-3">
-                        <input name="lama_terbilang" id="lama_terbilang" class="form-control input-sm required" maxlength="100"
-                            placeholder="Lama Cuti Dalam Hari" type="text">
+                        <input name="lama_terbilang" id="lama_terbilang" class="form-control input-sm required"
+                            maxlength="100" placeholder="Lama Cuti Dalam Hari" type="text">
                     </div>
                 </div>
                 <div class="form-group">
@@ -117,8 +127,8 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input class="form-control input-sm pull-right required" id="tgl_pengajuan" name="tgl_pengajuan"
-                                placeholder="Tgl. Pengajuan" type="text">
+                            <input class="form-control input-sm pull-right required" id="tgl_pengajuan"
+                                name="tgl_pengajuan" placeholder="Tgl. Pengajuan" type="text">
                         </div>
                     </div>
                 </div>
@@ -132,8 +142,8 @@
                     <div class="col-sm-3">
                         <select class="form-control input-sm required" name="status" id="status">
                             <option value="">Pilih Keterangan</option>
-                            <option value="1">DIAJUKAN</option>
-                            <option value="0">DISETUJUI ATASAN</option>
+                            <option value="DIAJUKAN">DIAJUKAN</option>
+                            <option value="DISETUJUI ATASAN">DISETUJUI ATASAN</option>
                             <!-- Default Value Aktif -->
                         </select>
                     </div>

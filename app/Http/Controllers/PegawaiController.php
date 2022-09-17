@@ -30,10 +30,10 @@ class PegawaiController extends Controller
 
         $data = DB::select("SELECT * FROM pegawais");
 
-        return view('pegawai.index', ['data'=>$data]);
+        return view('/pegawai.index', ['data'=>$data]);
     }
 
-    public function show($id){
+    public function show($id){ //show for details
         
         $pegawai = Pegawai::find($id);
 

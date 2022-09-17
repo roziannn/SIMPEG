@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cuti;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CutiController extends Controller
 {
@@ -45,7 +46,7 @@ class CutiController extends Controller
        $request->accepts('session');
        session()->flash('success', 'Berhasil menambahkan data!');
 
-       return view('/cuti.index');
+       return view('/cuti.add');
     }
 
     /**
@@ -54,9 +55,12 @@ class CutiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+
+        $data = DB::select("SELECT * FROM cutis");
+
+        return view('/cuti.index', ['data'=>$data]);
     }
 
     /**
