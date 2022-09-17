@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cuti;
 use Illuminate\Http\Request;
 
 class CutiController extends Controller
@@ -32,14 +33,19 @@ class CutiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function add()
+    public function add() //just view form and input field
     {
         return view('cuti.add');
     }
 
     public function store(Request $request)
     {
-        //
+        Cuti::create($request->all());
+
+       $request->accepts('session');
+       session()->flash('success', 'Berhasil menambahkan data!');
+
+       return view('/cuti.index');
     }
 
     /**

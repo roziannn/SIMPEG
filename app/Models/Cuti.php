@@ -10,7 +10,6 @@ class Cuti extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nip',
         'nama',
         'jabatan',
         'unitkerja_nama',

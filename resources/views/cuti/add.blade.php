@@ -27,28 +27,28 @@
                 class="btn btn-social btn-flat btn-info btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"
                 title="Kembali Ke Daftar Program Bantuan"><i class="fa fa-arrow-circle-o-left"></i> Kembali Ke Data Cuti</a>
         </div>
-        <form id="validasi" action="" method="POST" enctype="multipart/form-data" class="form-horizontal">
+        <form action="/store-data-cuti" method="POST" enctype="multipart/form-data" class="form-horizontal">
+            @csrf
             <div class="box-body">
-
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="nama">Nama</label>
                     <div class="col-sm-4">
-                        <input name="nama" class="form-control input-sm nomor_sk required" maxlength="100"
-                            placeholder="Nama" type="text">
+                        <input name="nama" class="form-control input-sm required" maxlength="100"
+                            placeholder="Nama" id="nama" type="text">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="nama">Jabatan</label>
                     <div class="col-sm-3">
-                        <input name="nama" class="form-control input-sm nomor_sk required" maxlength="100"
-                            placeholder="Jabatan" type="text">
+                        <input name="jabatan" class="form-control input-sm required" maxlength="100"
+                            placeholder="Jabatan" id="jabatan" type="text">
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-3 control-label-left-left">Unit Kerja</label>
                     <div class="col-sm-3">
-                        <select class="form-control input-sm required" name="cid" id="cid">
+                        <select class="form-control input-sm required" name="unitkerja_nama" id="unitkerja_nama">
                             <option value="">Pilih Unit Kerja </option>
                             <option value="SEKRETARIAT">SEKRETARIAT</option>
                             <option value="BIDANG E-GOVERMENT">BIDANG E-GOVERMENT</option>
@@ -63,7 +63,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label-left-left">Jenis Cuti</label>
                     <div class="col-sm-3">
-                        <select class="form-control input-sm required" name="cid" id="cid">
+                        <select class="form-control input-sm required" name="jenis_cuti" id="jenis_cuti">
                             <option value="">Pilih Jenis Cuti </option>
                             <option value="1">TAHUNAN</option>
                             <option value="2">BESAR</option>
@@ -76,20 +76,20 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label-left col-sm-3" for="nama">Lama Terbilang</label>
+                    <label class="control-label-left col-sm-3" for="lama_terbilang">Lama Terbilang</label>
                     <div class="col-sm-3">
-                        <input name="nama" class="form-control input-sm nomor_sk required" maxlength="100"
+                        <input name="lama_terbilang" id="lama_terbilang" class="form-control input-sm required" maxlength="100"
                             placeholder="Lama Cuti Dalam Hari" type="text">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-3 control-label-left" for="tgl_post">Tanggal Cuti</label>
+                    <label class="col-sm-3 control-label-left">Tanggal Cuti</label>
                     <div class="col-sm-4">
                         <div class="input-group input-group-sm date" id="datetimepicker">
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input class="form-control input-sm pull-right required" id="tgl_1" name="sdate"
+                            <input class="form-control input-sm pull-right required" id="tgl_mulai" name="tgl_mulai"
                                 placeholder="Tgl. Mulai" type="text">
                         </div>
                     </div>
@@ -98,19 +98,15 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input class="form-control input-sm pull-right required" id="tgl_2" name="edate"
+                            <input class="form-control input-sm pull-right required" id="tgl_selesai" name="tgl_selesai"
                                 placeholder="Tgl. Akhir" type="text">
                         </div>
                     </div>
                 </div>
-
-
-               
-
                 <div class="form-group">
-                    <label class="col-sm-3 control-label-left" for="ndesc">Uraian</label>
+                    <label class="col-sm-3 control-label-left" for="uraian">Uraian</label>
                     <div class="col-sm-4">
-                        <textarea id="ndesc" name="ndesc" class="form-control input-sm required" placeholder="Isi Uraian"
+                        <textarea id="uraian" name="uraian" class="form-control input-sm required" placeholder="Isi Uraian"
                             rows="3"></textarea>
                     </div>
                 </div>
@@ -121,7 +117,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                             </div>
-                            <input class="form-control input-sm pull-right required" id="tgl_1" name="sdate"
+                            <input class="form-control input-sm pull-right required" id="tgl_pengajuan" name="tgl_pengajuan"
                                 placeholder="Tgl. Pengajuan" type="text">
                         </div>
                     </div>
@@ -135,6 +131,7 @@
                     <label class="col-sm-3 control-label-left" for="status">Keterangan Proses</label>
                     <div class="col-sm-3">
                         <select class="form-control input-sm required" name="status" id="status">
+                            <option value="">Pilih Keterangan</option>
                             <option value="1">DIAJUKAN</option>
                             <option value="0">DISETUJUI ATASAN</option>
                             <!-- Default Value Aktif -->
@@ -148,7 +145,6 @@
                 <button type="submit" class="btn btn-social btn-flat btn-info btn-sm pull-right confirm"><i
                         class="fa fa-check"></i> Simpan</button>
             </div>
-            <input type="hidden" name="sidcsrf" value="0e7d57570707d25bc8d8a3d7aa1c1d6e">
         </form>
     </div>
 @endsection
