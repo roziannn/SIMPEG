@@ -23,7 +23,7 @@ class CutiController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -32,6 +32,11 @@ class CutiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function add()
+    {
+        return view('cuti.add');
+    }
+
     public function store(Request $request)
     {
         //

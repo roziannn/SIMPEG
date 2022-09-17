@@ -9,10 +9,20 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.12.1/datatables.min.css" />
 @endpush
 
+<style>
+    .table,
+    .sidebar, .pagination {
+        font-size: 13px;
+    }
+    .table {
+        text-align: center;
+    }
+</style>
+
 @section('content')
     <div class="box box-info">
         <div class="box-header with-border">
-            <a href="/pengajuan-cuti"
+            <a href="/tambah-data-cuti"
                 class="btn btn-social btn-flat btn-success btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"
                 title="Kembali Ke Daftar Program Bantuan"><i class="fa fa-plus"></i> Tambah Cuti Pegawai</a>
         </div>
@@ -23,20 +33,56 @@
                         <table id="myTable" class="table table-stiped table-bordered ">
                             <thead class="bg-gray disabled color-palette">
                                 <tr>
-                                    <th>No</th>
-                                    <th>Aksi</th>
-                                    <th>Nama</th>
-                                    <th>Jabatan</th>
-                                    <th>Unit Kerja</th>
-                                    <th>Jenis Cuti</th>
-                                    <th>Tanggal Mulai</th>
-                                    <th>Tanggal Selesai</th>
-                                    <th>Lama Terbilang</th>
-                                    <th>Deskripsi</th>
-                                    <th>Tanggal Pengajuan</th>
-                                    <th>Status Cuti</th> 
+                                    <th style="text-align: center">No</th>
+                                    <th style="text-align: center">Aksi</th>
+                                    <th style="text-align: center">Nama</th>
+                                    <th style="text-align: center">Jabatan</th>
+                                    <th style="text-align: center">Unit Kerja</th>
+                                    <th style="text-align: center">Jenis Cuti</th>
+                                    <th style="text-align: center">Tanggal Mulai</th>
+                                    <th style="text-align: center">Tanggal Selesai</th>
+                                    <th style="text-align: center">Lama Terbilang</th>
+                                    <th style="text-align: center">Uraian</th>
+                                    <th style="text-align: center">Tanggal Pengajuan</th>
+                                    <th style="text-align: center">Status Cuti</th> 
                                 </tr>
                             </thead>
+                            <tbody>
+                                @php $i=1 @endphp
+                                    <tr>
+                                        <td>{{ $i++ }}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button"
+                                                    class="btn btn-social btn-flat btn-info btn-xs"
+                                                    data-toggle="dropdown" aria-expanded="false"><i
+                                                        class="fa fa-arrow-circle-down"></i> Pilih Aksi
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li>
+                                                        <a href="#" 
+                                                            class="btn btn-social btn-flat btn-block btn-xs"><i
+                                                                class="fa fa-edit"></i>Ubah Data</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#"
+                                                            class="btn btn-social btn-flat btn-block btn-xs"data-toggle="modal"
+                                                            data-target="#modal-danger"><i
+                                                                class="fa fa-trash"></i>Hapus Data
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                            </tbody>
                         </table>
                     </div>
                 </div>

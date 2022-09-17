@@ -30,15 +30,7 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
-  <style>
-    .table,
-    .sidebar, .pagination {
-        font-size: 13px;
-    }
-    .table {
-        text-align: center;
-    }
-</style>
+ 
 
   @stack('css')
 </head>

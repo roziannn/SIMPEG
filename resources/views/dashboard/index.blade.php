@@ -18,7 +18,7 @@
                             <div class="small-box bg-purple">
                                 <div class="inner">
                                     <h3>5</h3>
-                                    <p>Wilayah Dusun</p>
+                                    <p>Pegawai Isoman</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-location"></i>
@@ -29,8 +29,8 @@
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <h3>5</h3>
-                                    <p>Wilayah Dusun</p>
+                                    <h3>4</h3>
+                                    <p>Pengaduan</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-location"></i>
@@ -41,8 +41,8 @@
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box bg-green">
                                 <div class="inner">
-                                    <h3>5</h3>
-                                    <p>Wilayah Dusun</p>
+                                    <h3>139</h3>
+                                    <p>PNS</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-location"></i>
@@ -53,8 +53,8 @@
                         <div class="col-lg-3 col-xs-6">
                             <div class="small-box bg-red">
                                 <div class="inner">
-                                    <h3>5</h3>
-                                    <p>Wilayah Dusun</p>
+                                    <h3>6</h3>
+                                    <p>Unit Kerja</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-location"></i>

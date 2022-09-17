@@ -57,7 +57,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="rekapTAP"><i class="fa fa-file-text"></i>Pengajuan Cuti</a></li>
+            <li><a href="/tambah-data-cuti"><i class="fa fa-file-text"></i>Pengajuan Cuti</a></li>
             <li><a href="rekapTAM"><i class="fa fa-info "></i>Pengaduan</a></li>
           </ul>
         </li>

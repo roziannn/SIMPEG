@@ -50,6 +50,7 @@ Route::match(['get', 'post'], '/edit{id}', [UserController::class,'edit']);
 
 //cuti
 Route::get('/data-cuti', [CutiController::class, 'index']);
+Route::get('/tambah-data-cuti', [CutiController::class, 'add']);
 
 Route::get('/home-simpeg', [UserController::class,'widget']);
 
