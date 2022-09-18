@@ -48,11 +48,19 @@ Route::get('/delete{nip}', [PegawaiController::class, 'delete']);
 Route::get('/delete{id}', [UserController::class, 'delete']);
 Route::match(['get', 'post'], '/edit{id}', [UserController::class,'edit']);
 
+
 //cuti
 Route::get('/data-cuti', [CutiController::class, 'index']);
 Route::get('/data-cuti', [CutiController::class, 'show']);
 Route::get('/tambah-data-cuti', [CutiController::class, 'add']);
 Route::post('/store-data-cuti', [CutiController::class, 'store']);
+Route::get('/delete-cuti/{id}', [CutiController::class, 'delete']);
+
+Route::match(['get', 'post'], '/edit-cuti{id}', [CutiController::class,'edit']);
+Route::post('/edit-cuti/{id}', [CutiController::class,'update']);
+
+Route::get('autocomplete', [CutiController::class, 'autocomplete'])->name('autocomplete'); 
+
 
 Route::get('/home-simpeg', [UserController::class,'widget']);
 

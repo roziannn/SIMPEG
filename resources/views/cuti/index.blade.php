@@ -11,9 +11,11 @@
 
 <style>
     .table,
-    .sidebar, .pagination {
+    .sidebar,
+    .pagination {
         font-size: 13px;
     }
+
     .table {
         text-align: center;
     }
@@ -44,31 +46,31 @@
                                     <th style="text-align: center">Lama Terbilang</th>
                                     <th style="text-align: center">Uraian</th>
                                     <th style="text-align: center">Tanggal Pengajuan</th>
-                                    <th style="text-align: center">Status Cuti</th> 
+                                    <th style="text-align: center">Status Cuti</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php $i=1 @endphp
-                                @foreach ( $data as $item )
+                                @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <button type="button"
-                                                    class="btn btn-social btn-flat btn-info btn-xs"
+                                                <button type="button" class="btn btn-social btn-flat btn-info btn-xs"
                                                     data-toggle="dropdown" aria-expanded="false"><i
                                                         class="fa fa-arrow-circle-down"></i> Pilih Aksi
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>
-                                                        <a href="#" 
-                                                            class="btn btn-social btn-flat btn-block btn-xs"><i
+                                                        <a href="#" class="btn btn-social btn-flat btn-block btn-xs"
+                                                            data-toggle="modal"
+                                                            data-target="#modal-info{{ $item->id }}"><i
                                                                 class="fa fa-edit"></i>Ubah Data</a>
                                                     </li>
                                                     <li>
                                                         <a href="#"
                                                             class="btn btn-social btn-flat btn-block btn-xs"data-toggle="modal"
-                                                            data-target="#modal-danger"><i
+                                                            data-target="#modal-danger{{ $item->id }}"><i
                                                                 class="fa fa-trash"></i>Hapus Data
                                                         </a>
                                                     </li>
@@ -86,18 +88,79 @@
                                         <td>{{ $item->tgl_pengajuan }}</td>
                                         <td>{{ $item->status }}</td>
                                     </tr>
-                                    @endforeach
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="box-footer">
 
-        </div>
+
+        {{-- danger modal --}}
+        @foreach ($data as $item)
+            <div class="modal modal-danger fade" id="modal-danger{{ $item->id }}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Konfirmasi</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ url('delete-cuti/' . $item->id) }}" method="GET">
+                                {{ csrf_field() }}
+                                <p>Yakin ingin menghapus data?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline">Hapus</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
+
+    {{-- MODAL POP UP --}}
+    @foreach ($data as $item)
+        <div class="modal modal-default fade" id="modal-info{{ $item->id }}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Edit Data Cuti</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="{{ url('edit-cuti/' . $item->id) }}" method="POST">
+                            {{ csrf_field() }}
+
+                            <div class="form-group">
+                                <label for="nama">Nama Lengkap</label>
+                                <input type="nama" name="nama" class="form-control" id="nama"
+                                    placeholder="Nama Lengkap" value="{{ $item->nama }}">
+                            </div>
+                            <div class="form-group">
+                                <label for="nama">Jabatan</label>
+                                <input type="nama" name="jabatan" class="form-control" id="jabatan"
+                                    placeholder="Jabatan" value="{{ $item->jabatan }}">
+                            </div>
+                            {{-- END MODAL-BODY --}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection
+   
 
 
 @push('scripts')

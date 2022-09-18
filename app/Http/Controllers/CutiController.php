@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cuti;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,7 +26,6 @@ class CutiController extends Controller
      */
     public function create()
     {
-        
     }
 
     /**
@@ -43,10 +43,10 @@ class CutiController extends Controller
     {
         Cuti::create($request->all());
 
-       $request->accepts('session');
-       session()->flash('success', 'Berhasil menambahkan data!');
+        $request->accepts('session');
+        session()->flash('success', 'Berhasil menambahkan data!');
 
-       return view('/cuti.add');
+        return view('/cuti.add');
     }
 
     /**
@@ -58,9 +58,9 @@ class CutiController extends Controller
     public function show()
     {
 
-        $data = DB::select("SELECT * FROM cutis");
+        $data = DB::select("SELECT * FROM cutis order by nama asc");
 
-        return view('/cuti.index', ['data'=>$data]);
+        return view('/cuti.index', ['data' => $data]);
     }
 
     /**
@@ -71,7 +71,10 @@ class CutiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit = Cuti::find($id);
+     
+        return view('pegawai.edit', compact('edit'));
+         
     }
 
     /**
@@ -81,9 +84,17 @@ class CutiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id){
+        Cuti::where('id', $id)->update([
+            'nama'=> $request->nama,
+            'jabatan'=> $request->jabatan,
+            'unitkerja_nama'=> $request->unitkerja_nama,
+        ]);
+
+        $request->accepts('session');
+        session()->flash('success', 'Berhasil menambahkan user!');
+
+        return redirect()->back();
     }
 
     /**
@@ -92,8 +103,18 @@ class CutiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $data = Cuti::find($id);
+        $data->delete();
+
+        return redirect('/data-cuti')->with('successDelete', 'Data has been deleted!');
+    }
+
+    public function autocomplete(Request $request)
+    {
+        $query = $request->get('query');
+        $filterResult = Pegawai::where('nama', 'LIKE', '%' . $query . '%')->get('nama');
+        return response()->json($filterResult);
     }
 }

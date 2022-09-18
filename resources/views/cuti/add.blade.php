@@ -1,6 +1,6 @@
 @extends('layouts.master')
 <link rel="icon" href="">
-
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @section('title')
     Tambah Data Cuti Pegawai
 @endsection
@@ -12,7 +12,10 @@
         rel="stylesheet">
 @endpush
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+{{-- datepicker --}}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 
 <style>
@@ -43,16 +46,17 @@
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="nama">Nama</label>
                     <div class="col-sm-4">
-                        <input name="nama" class="form-control input-sm required" maxlength="100" placeholder="Nama"
-                            id="nama" type="text">
+                        <input class="typeahead form-control input-sm required" maxlength="100" placeholder="Nama"
+                            id="nama" name="nama" type="text" autocomplete="off">
                     </div>
                 </div>
+            
 
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="nama">Jabatan</label>
                     <div class="col-sm-3">
                         <input name="jabatan" class="form-control input-sm required" maxlength="100" placeholder="Jabatan"
-                            id="jabatan" type="text">
+                            id="jabatan" type="text" autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group">
@@ -89,7 +93,7 @@
                     <label class="control-label-left col-sm-3" for="lama_terbilang">Lama Terbilang</label>
                     <div class="col-sm-3">
                         <input name="lama_terbilang" id="lama_terbilang" class="form-control input-sm required"
-                            maxlength="100" placeholder="Lama Cuti Dalam Hari" type="text">
+                            maxlength="100" placeholder="Lama Cuti Dalam Hari" type="text" autocomplete="off">
                     </div>
                 </div>
                 <div class="form-group">
@@ -100,7 +104,7 @@
                                 <i class="fa fa-calendar"></i>
                             </div>
                             <input class="form-control input-sm pull-right required" id="tgl_mulai" name="tgl_mulai"
-                                placeholder="Tgl. Mulai" type="text">
+                                placeholder="Tgl. Mulai" type="text" autocomplete="off">
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -109,7 +113,7 @@
                                 <i class="fa fa-calendar"></i>
                             </div>
                             <input class="form-control input-sm pull-right required" id="tgl_selesai" name="tgl_selesai"
-                                placeholder="Tgl. Akhir" type="text">
+                                placeholder="Tgl. Akhir" type="text" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -117,7 +121,7 @@
                     <label class="col-sm-3 control-label-left" for="uraian">Uraian</label>
                     <div class="col-sm-4">
                         <textarea id="uraian" name="uraian" class="form-control input-sm required" placeholder="Isi Uraian"
-                            rows="3"></textarea>
+                            rows="1"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -128,7 +132,7 @@
                                 <i class="fa fa-calendar"></i>
                             </div>
                             <input class="form-control input-sm pull-right required" id="tgl_pengajuan"
-                                name="tgl_pengajuan" placeholder="Tgl. Pengajuan" type="text">
+                                name="tgl_pengajuan" placeholder="Tgl. Pengajuan" type="text" autocomplete="off">
                         </div>
                     </div>
                 </div>
