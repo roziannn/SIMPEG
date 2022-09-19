@@ -28,6 +28,14 @@
                 class="btn btn-social btn-flat btn-success btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"
                 title="Kembali Ke Daftar Program Bantuan"><i class="fa fa-plus"></i> Tambah Cuti Pegawai</a>
         </div>
+        @if (session()->has('success'))
+        <div class="box-body">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            </div>
+        </div>
+    @endif
         <div class="box-body">
             <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                 <div class="table-responsive table-min-height" style="padding-bottom: 0px">
@@ -148,6 +156,20 @@
                                 <input type="nama" name="jabatan" class="form-control" id="jabatan"
                                     placeholder="Jabatan" value="{{ $item->jabatan }}">
                             </div>
+
+                            <div class="form-group">
+                                <label for="gender">Status Cuti </label>
+                                <select class="form-control input-sm" name="status" id="status"
+                                    value="{{ $item->status }}" required>
+                                    <option value="">Pilih Status Cuti </option>
+                                    <option value="DIAJUKAN"{{ $item->status == 'DIAJUKAN' ? 'selected' : '' }}>
+                                        DIAJUKAN</option>
+                                    <option
+                                        value="DISETUJUI ATASAN"{{ $item->status == 'DISETUJUI ATASAN' ? 'selected' : '' }}>
+                                        DISETUJUI ATASAN</option>
+                                </select>
+                            </div>
+
                             {{-- END MODAL-BODY --}}
                     </div>
                     <div class="modal-footer">
@@ -160,8 +182,6 @@
         </div>
     @endforeach
 @endsection
-   
-
 
 @push('scripts')
     <script>

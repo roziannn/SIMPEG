@@ -10,6 +10,8 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css"
         rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
 
 
@@ -50,7 +52,7 @@
                             id="nama" name="nama" type="text" autocomplete="off">
                     </div>
                 </div>
-            
+
 
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="nama">Jabatan</label>
@@ -59,6 +61,7 @@
                             id="jabatan" type="text" autocomplete="off">
                     </div>
                 </div>
+
                 <div class="form-group">
                     <label class="col-sm-3 control-label-left-left">Unit Kerja</label>
                     <div class="col-sm-3">

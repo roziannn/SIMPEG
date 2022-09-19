@@ -10,9 +10,11 @@
 
 <style>
     .table,
-    .sidebar, .pagination {
+    .sidebar,
+    .pagination {
         font-size: 13px;
     }
+
     .table {
         text-align: center;
     }
@@ -77,7 +79,7 @@
                                                                         class="fa fa-list-ol"></i>Lihat Detail</a>
                                                             </li>
                                                             <li>
-                                                                <a href="{{ url('edit-pegawai/' . $item->id) }}" 
+                                                                <a href="{{ url('edit-pegawai/' . $item->id) }}"
                                                                     class="btn btn-social btn-flat btn-block btn-xs"><i
                                                                         class="fa fa-edit"></i>Ubah Data</a>
                                                             </li>

@@ -21,7 +21,7 @@
 
                 @if (session()->has('success'))
                     <div class="box-body">
-                        <div class="alert alert-success alert-dismissible" role="alert">
+                        <div class="alert alert-warning alert-dismissible" role="alert">
                             {{ session('success') }}
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                         </div>

@@ -60,7 +60,7 @@ class PegawaiController extends Controller
         ]);
 
         $request->accepts('session');
-        session()->flash('success', 'Berhasil menambahkan user!');
+        session()->flash('success', 'Berhasil mengubah data pegawai!');
 
         return redirect()->back();
     }

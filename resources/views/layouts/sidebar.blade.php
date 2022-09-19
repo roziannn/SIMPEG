@@ -28,10 +28,17 @@
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
           </a>
         </li>
-        <li>
-          <a href="kehadiran">
+        <li class="treeview">
+          <a href="#">
             <i class="fa fa-heartbeat"></i> <span>Siaga Covid-19</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa fa-medkit"></i> Vaksin</a></li>
+            <li><a href="#"><i class="fa fa-list"></i> Riwayat Isoman</a></li>
+          </ul>
         </li>
         <li>
           <a href="/data-pegawai">
