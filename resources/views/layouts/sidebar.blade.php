@@ -36,7 +36,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa fa-medkit"></i> Vaksin</a></li>
+            <li><a href="/data-vaksin"><i class="fa fa fa-medkit"></i> Vaksin</a></li>
             <li><a href="#"><i class="fa fa-list"></i> Riwayat Isoman</a></li>
           </ul>
         </li>

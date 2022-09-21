@@ -4,6 +4,7 @@ use App\Http\Controllers\CutiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\CovidController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,8 +61,11 @@ Route::post('/edit-cuti/{id}', [CutiController::class,'update']);
 
 Route::get('autocomplete', [CutiController::class, 'autocomplete'])->name('autocomplete'); 
 
-
+//home-widget
 Route::get('/home-simpeg', [UserController::class,'widget']);
 
+//vaksin
+Route::get('/data-vaksin', [CovidController::class, 'index']);
+Route::get('/data-vaksin/rekap_vaksin', [CovidController::class, 'rekap']);
 
 

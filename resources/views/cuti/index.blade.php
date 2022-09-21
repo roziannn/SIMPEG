@@ -28,14 +28,16 @@
                 class="btn btn-social btn-flat btn-success btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"
                 title="Kembali Ke Daftar Program Bantuan"><i class="fa fa-plus"></i> Tambah Cuti Pegawai</a>
         </div>
+
         @if (session()->has('success'))
-        <div class="box-body">
-            <div class="alert alert-warning alert-dismissible" role="alert">
-                {{ session('success') }}
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <div class="box-body">
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                </div>
             </div>
-        </div>
-    @endif
+        @endif
+
         <div class="box-body">
             <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                 <div class="table-responsive table-min-height" style="padding-bottom: 0px">
