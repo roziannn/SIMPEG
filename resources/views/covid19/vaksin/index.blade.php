@@ -61,6 +61,7 @@
                                                 <th>Jabatan</th>
                                                 <th>Unit Kerja</th>
                                                 <th>Nomor Telepon</th>
+                                                <th>Alamat</th>
                                                 <th>Keterangan</th>
                                             </tr>
                                         </thead>

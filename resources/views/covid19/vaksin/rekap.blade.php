@@ -31,7 +31,7 @@
                     <div class="box-footer no-padding">
                         <ul class="nav nav-stacked">
                             <li><a href="/data-vaksin">Daftar Penerima Vaksin</a></li>
-                            <li><a href="/data-vaksin/rekap_vaksin">Rekap Penerima Vaksin</a></li>
+                            <li><a href="/data-vaksin/rekap_vaksin">Rekap Pegawai</a></li>
                         </ul>
                     </div>
                 </div>
@@ -55,14 +55,21 @@
                                         class="table table-bordered dataTable table-striped  table-hover">
                                         <thead class="bg-gray color-palette">
                                             <tr>
-                                                <th>No</th>
-                                                <th>Aksi</th>
-                                                <th>NIP</th>
-                                                <th>Nama</th>
-                                                <th>Jabatan</th>
-                                                <th>Unit Kerja</th>
-                                                <th>Nomor Telepon</th>
-                                                <th>Keterangan</th>
+                                                <th style="text-align:center" rowspan="2">No</th>
+                                                <th style="text-align:center" rowspan="2">NIP</th>
+                                                <th style="text-align:center" rowspan="2">Nama</th>
+                                                <th style="text-align:center" rowspan="2">Jabatan</th>
+                                                <th style="text-align:center" rowspan="2">Unit Kerja</th>
+                                                <th style="text-align:center" rowspan="2">No Telepon</th>
+                                                <th style="text-align:center" rowspan="2">Jenis Kelamin</th>
+                                                <th style="text-align:center" colspan="5">Vaksin</th>
+                                            </tr>
+                                            <tr>
+                                                <td>I</td>
+                                                <td>II</td>
+                                                <td>III</td>
+                                                <td>Belum</td>
+                                                <td>Ket</td>
                                             </tr>
                                         </thead>
                                         <tbody>
