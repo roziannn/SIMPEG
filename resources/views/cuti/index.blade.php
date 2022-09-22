@@ -7,7 +7,15 @@
 
 @push('css')
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.12.1/datatables.min.css" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 @endpush
+
+{{-- datepicker --}}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
 
 <style>
     .table,
@@ -51,12 +59,13 @@
                                 </tr>
                             </thead>
 
-                            @if(session('update_success'))
-                            <div class="alert alert-warning alert-dismissable" role="alert">
-                              {{ session('update_success') }}
-                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                            </div>
-                          @endif
+                            @if (session('update_success'))
+                                <div class="alert alert-warning alert-dismissable" role="alert">
+                                    {{ session('update_success') }}
+                                    <button type="button" class="close" data-dismiss="alert"
+                                        aria-hidden="true">&times;</button>
+                                </div>
+                            @endif
 
                             <tbody>
                                 @php $i=1 @endphp
@@ -155,11 +164,48 @@
                                     placeholder="Nama Lengkap" value="{{ $item->nama }}" readonly>
                             </div>
                             <div class="form-group">
+                                <label for="tgl_post">Tanggal Pengajuan </label>
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input class="form-control input-sm pull-right required" id="tgl_pengajuan"
+                                        name="tgl_pengajuan" placeholder="Tgl. Pengajuan" type="text"
+                                        autocomplete="off" value="{{ $item->tgl_pengajuan }}" readonly>
+                                </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                <label for="tgl_cuti">Tanggal Cuti</label>
+                                <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group input-group-sm date" id="datetimepicker">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input class="form-control input-sm pull-right required" id="tgl_mulai" name="tgl_mulai" placeholder="Tgl. Mulai" type="text" value="{{ $item->tgl_mulai }}" autocomplete="off">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-group input-group-sm date" id="datetimepicker">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </div>
+                                        <input class="form-control input-sm pull-right required" id="tgl_selesai" name="tgl_selesai" placeholder="Tgl. Akhir" type="text" value="{{ $item->tgl_selesai }}" autocomplete="off">
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $('.date').datepicker({
+                                    format: 'mm-dd-yyyy'
+                                });
+                            </script>
+                            <div class="form-group">
                                 <label for="nama">Lama Terbilang</label>
                                 <input type="nama" name="lama_terbilang" class="form-control" id="lama_terbilang"
                                     placeholder="lama_terbilang" value="{{ $item->lama_terbilang }}" autocomplete="off">
                             </div>
-
                             <div class="form-group">
                                 <label for="gender">Status Cuti </label>
                                 <select class="form-control input-sm" name="status" id="status"

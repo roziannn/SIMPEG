@@ -35,7 +35,7 @@
             <div class="box box-info">
                 <div class="box-header with-border">
                     <div class="btn-group btn-group-vertical">
-                        <a href="/data-pegawai/tambah_data_pegawai" class="btn btn-social btn-flat btn-success btn-xs"><i
+                        <a href="/data-pegawai/tambah_data_pegawai" class="btn btn-social btn-flat btn-success btn-xs" title="Tambah Data"><i
                                 class="fa fa-plus"></i> Tambah Data Pegawai
                         </a>
                     </div>

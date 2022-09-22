@@ -57,6 +57,9 @@ class CutiController extends Controller
         Cuti::where('id', $id)->update([
             'nama'=> $request->nama,
             'lama_terbilang'=> $request->lama_terbilang,
+            'tgl_pengajuan'=> $request->tgl_pengajuan,
+            'tgl_mulai'=> $request->tgl_mulai,
+            'tgl_selesai'=> $request->tgl_selesai,
             'status'=> $request->status,
         ]);
 
