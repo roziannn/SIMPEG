@@ -13,11 +13,11 @@ class CovidController extends Controller
      */
     public function index()
     {
-        return view('covid19.vaksin.index');
+        return view('covid19.vaksin.daftar_penerima.index');
     }
     public function rekap()
     {
-        return view('covid19.vaksin.rekap');
+        return view('covid19.vaksin.rekap_penerima.rekap');
     }
 
     /**
