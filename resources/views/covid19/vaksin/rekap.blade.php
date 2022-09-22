@@ -2,7 +2,7 @@
 <link rel="icon" href="">
 
 @section('title')
-    Rekap Penerima Vaksin 
+    Rekap Penerima Vaksin
 @endsection
 
 @push('css')
@@ -15,6 +15,7 @@
     .pagination {
         font-size: 13px;
     }
+
 
     .table {
         text-align: center;
@@ -31,7 +32,7 @@
                     <div class="box-footer no-padding">
                         <ul class="nav nav-stacked">
                             <li><a href="/data-vaksin">Daftar Penerima Vaksin</a></li>
-                            <li><a href="/data-vaksin/rekap_vaksin">Rekap Pegawai</a></li>
+                            <li class="active"><a href="/data-vaksin/rekap_vaksin">Rekap Penerima Vaksin</a></li>
                         </ul>
                     </div>
                 </div>
@@ -52,7 +53,7 @@
                             <div class="col-sm-12">
                                 <div class="table-responsive">
                                     <table id="table-data"
-                                        class="table table-bordered dataTable table-striped  table-hover">
+                                        class="table table-bordered dataTable table-striped  table-hover" style="width:100%">
                                         <thead class="bg-gray color-palette">
                                             <tr>
                                                 <th style="text-align:center" rowspan="2">No</th>
@@ -74,13 +75,15 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
+                                                <td>1</td>
+                                                <td>Lorem ipsum dolor sit amet.</td>
+                                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt,
+                                                    veritatis.</td>
+                                                <td>Lorem, ipsum.</td>
+                                                <td>Lorem.</td>
+                                                <td>Lorem.</td>
+                                                <td>Lorem.</td>
+                                                <td>Lorem ipsum dolor sit amet.</td>
                                             </tr>
                                         </tbody>
                                     </table>

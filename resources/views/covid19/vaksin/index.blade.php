@@ -30,7 +30,7 @@
                 <div class="box-body no-padding">
                     <div class="box-footer no-padding">
                         <ul class="nav nav-stacked">
-                            <li><a href="/data-vaksin">Daftar Penerima Vaksin</a></li>
+                            <li class="active"><a href="/data-vaksin">Daftar Penerima Vaksin</a></li>
                             <li><a href="/data-vaksin/rekap_vaksin">Rekap Penerima Vaksin</a></li>
                         </ul>
                     </div>
@@ -67,13 +67,9 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
-                                            </tr>
-                                            <tr>
-                                                <td></td>
+                                                <td>1</td>
+                                                <td>Lorem ipsum dolor sit amet.</td>
+                                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, veritatis.</td>
                                             </tr>
                                         </tbody>
                                     </table>
