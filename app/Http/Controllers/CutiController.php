@@ -56,14 +56,11 @@ class CutiController extends Controller
     public function update(Request $request, $id){
         Cuti::where('id', $id)->update([
             'nama'=> $request->nama,
-            'jabatan'=> $request->jabatan,
+            'lama_terbilang'=> $request->lama_terbilang,
             'status'=> $request->status,
         ]);
 
-        $request->accepts('session');
-        session()->flash('success', 'Berhasil mengupdate data!');
-
-        return redirect()->back();
+        return redirect()->back()->with('update_success', 'Update data berhasil!');;
     }
 
 

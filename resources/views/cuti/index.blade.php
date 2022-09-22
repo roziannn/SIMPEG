@@ -24,19 +24,10 @@
 @section('content')
     <div class="box box-info">
         <div class="box-header with-border">
-            <a href="/tambah-data-cuti"
+            <a href="/tambah_data_cuti"
                 class="btn btn-social btn-flat btn-success btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"
                 title="Kembali Ke Daftar Program Bantuan"><i class="fa fa-plus"></i> Tambah Cuti Pegawai</a>
         </div>
-
-        @if (session()->has('success'))
-            <div class="box-body">
-                <div class="alert alert-warning alert-dismissible" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                </div>
-            </div>
-        @endif
 
         <div class="box-body">
             <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
@@ -59,6 +50,14 @@
                                     <th style="text-align: center">Status Cuti</th>
                                 </tr>
                             </thead>
+
+                            @if(session('update_success'))
+                            <div class="alert alert-warning alert-dismissable" role="alert">
+                              {{ session('update_success') }}
+                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            </div>
+                          @endif
+
                             <tbody>
                                 @php $i=1 @endphp
                                 @foreach ($data as $item)
@@ -107,6 +106,7 @@
         </div>
 
 
+
         {{-- danger modal --}}
         @foreach ($data as $item)
             <div class="modal modal-danger fade" id="modal-danger{{ $item->id }}">
@@ -133,6 +133,7 @@
         @endforeach
     </div>
 
+
     {{-- MODAL POP UP --}}
     @foreach ($data as $item)
         <div class="modal modal-default fade" id="modal-info{{ $item->id }}">
@@ -151,12 +152,12 @@
                             <div class="form-group">
                                 <label for="nama">Nama Lengkap</label>
                                 <input type="nama" name="nama" class="form-control" id="nama"
-                                    placeholder="Nama Lengkap" value="{{ $item->nama }}">
+                                    placeholder="Nama Lengkap" value="{{ $item->nama }}" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="nama">Jabatan</label>
-                                <input type="nama" name="jabatan" class="form-control" id="jabatan"
-                                    placeholder="Jabatan" value="{{ $item->jabatan }}">
+                                <label for="nama">Lama Terbilang</label>
+                                <input type="nama" name="lama_terbilang" class="form-control" id="lama_terbilang"
+                                    placeholder="lama_terbilang" value="{{ $item->lama_terbilang }}" autocomplete="off">
                             </div>
 
                             <div class="form-group">

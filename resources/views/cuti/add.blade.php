@@ -1,6 +1,6 @@
 @extends('layouts.master')
 <link rel="icon" href="">
-<meta name="csrf-token" content="{{ csrf_token() }}">
+
 @section('title')
     Tambah Data Cuti Pegawai
 @endsection

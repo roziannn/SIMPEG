@@ -35,7 +35,7 @@
             <div class="box box-info">
                 <div class="box-header with-border">
                     <div class="btn-group btn-group-vertical">
-                        <a href="add-data-pegawai" class="btn btn-social btn-flat btn-success btn-xs"><i
+                        <a href="/data-pegawai/tambah_data_pegawai" class="btn btn-social btn-flat btn-success btn-xs"><i
                                 class="fa fa-plus"></i> Tambah Data Pegawai
                         </a>
                     </div>
@@ -74,7 +74,7 @@
                                                         </button>
                                                         <ul class="dropdown-menu" role="menu">
                                                             <li>
-                                                                <a href="{{ url('detail-pegawai/' . $item->id) }}"
+                                                                <a href="{{ url('data-pegawai/detail-pegawai/' . $item->id) }}"
                                                                     class="btn btn-social btn-flat btn-block btn-xs"><i
                                                                         class="fa fa-list-ol"></i>Lihat Detail</a>
                                                             </li>

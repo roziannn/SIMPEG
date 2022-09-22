@@ -35,13 +35,13 @@ Route::post('/logout', [UserController::class, 'logout']);
 //pegawai
 Route::get('/data-pegawai', [PegawaiController::class, 'index'])->middleware('auth');
 Route::get('/data-pegawai', [PegawaiController::class, 'data_pegawai'])->middleware('auth');
-Route::get('/detail-pegawai/{id}', [PegawaiController::class, 'show']);
+Route::get('/data-pegawai/detail-pegawai/{id}', [PegawaiController::class, 'show']);
 
 Route::match(['get', 'post'], '/edit-pegawai/{id}', [PegawaiController::class,'edit']);
 Route::post('/edit-pegawai/{id}', [PegawaiController::class,'update']);
 
 
-Route::get('/add-data-pegawai', [PegawaiController::class, 'add_data_pegawai']);
+Route::get('/data-pegawai/tambah_data_pegawai', [PegawaiController::class, 'add_data_pegawai']);
 Route::post('/store-data-pegawai', [PegawaiController::class, 'store_add_data']);
 Route::get('/delete{nip}', [PegawaiController::class, 'delete']);
 
@@ -52,7 +52,7 @@ Route::match(['get', 'post'], '/edit{id}', [UserController::class,'edit']);
 
 //cuti
 Route::get('/data-cuti', [CutiController::class, 'show']);
-Route::get('/tambah-data-cuti', [CutiController::class, 'add']);
+Route::get('/tambah_data_cuti', [CutiController::class, 'add']);
 Route::post('/store-data-cuti', [CutiController::class, 'store']);
 Route::get('/delete-cuti/{id}', [CutiController::class, 'delete']);
 
