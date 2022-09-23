@@ -22,7 +22,9 @@ class CutiController extends Controller
 
     public function add() //just view form and input field
     {
-        return view('cuti.add');
+
+        $data = DB::table('pegawais')->orderBy('nama', 'asc')->get();
+        return view('cuti.add', compact('data'));
     }
 
     public function store(Request $request)
@@ -80,5 +82,24 @@ class CutiController extends Controller
         $query = $request->get('query');
         $filterResult = Pegawai::where('nama', 'LIKE', '%' . $query . '%')->get('nama');
         return response()->json($filterResult);
+    }
+
+    public function getEmployees(Request $request){
+        $search = $request->search;
+
+        if($search == ''){
+           $employees = Pegawai::orderby('name','asc')->select('id','name')->limit(5)->get();
+        }else{
+           $employees = Pegawai::orderby('name','asc')->select('id','name')->where('name', 'like', '%' .$search . '%')->limit(5)->get();
+        }
+  
+        $response = array();
+        foreach($employees as $employee){
+           $response[] = array(
+                "id"=>$employee->id,
+                "text"=>$employee->name
+           );
+        }
+        return response()->json($response); 
     }
 }

@@ -20,6 +20,9 @@ class CovidController extends Controller
         return view('covid19.vaksin.rekap_penerima.rekap');
     }
 
+    public function add_daftar_penerima(){
+        return view('covid19.vaksin.daftar_penerima.add');
+    }
     /**
      * Show the form for creating a new resource.
      *

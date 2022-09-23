@@ -42,7 +42,7 @@
         <div class="col-md-4 col-lg-9">
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <a href="#" title="Tambah Daftar Penerima"
+                    <a href="/data-vaksin/form" title="Tambah Daftar Penerima"
                         class="btn btn-social btn-flat bg-olive btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"><i
                             class="fa fa-plus"></i> Tambah Data</a>
                 </div>

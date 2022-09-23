@@ -56,6 +56,8 @@ Route::get('/tambah_data_cuti', [CutiController::class, 'add']);
 Route::post('/store-data-cuti', [CutiController::class, 'store']);
 Route::get('/delete-cuti/{id}', [CutiController::class, 'delete']);
 
+Route::post('/getEmployees', [CutiController::class, 'getEmployees'])->name('getEmployees');
+
 Route::match(['get', 'post'], '/edit-cuti{id}', [CutiController::class,'edit']);
 Route::post('/edit-cuti/{id}', [CutiController::class,'update']);
 
@@ -65,7 +67,15 @@ Route::get('autocomplete', [CutiController::class, 'autocomplete'])->name('autoc
 Route::get('/home-simpeg', [UserController::class,'widget']);
 
 //vaksin
+//daftar_penerima
 Route::get('/data-vaksin', [CovidController::class, 'index']);
+Route::get('/data-vaksin/form', [CovidController::class, 'add_daftar_penerima']);
+
+
+//rekap_penerima
 Route::get('/data-vaksin/rekap_vaksin', [CovidController::class, 'rekap']);
+
+
+
 
 

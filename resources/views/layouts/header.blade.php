@@ -36,8 +36,11 @@
                 </li>
                 <li class="user-footer">
                   <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat btn-xs">Ubah Kata Sandi</a>
+                    <a href="#" class="btn btn-default btn-flat btn-xs" data-toggle="modal"
+                    data-target="#modal-info">Ubah Kata Sandi</a>
                   </div>
+
+
                   <div class="pull-right">
                     <form action="/logout" method="post">
                       @csrf
