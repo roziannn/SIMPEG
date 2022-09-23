@@ -49,11 +49,11 @@
                         <input class="typeahead form-control input-sm required" maxlength="100" placeholder="Nama"
                             id="nama" name="nama" type="text" autocomplete="off">
                     </div> --}}
-                    <div class="col-sm-4">
-                        <select id='nama' name="nama" style='width: 200px;'>
-                            <option></option>
+                    <div class="col-sm-3">
+                        <select class="form-control input-sm required"  id='nama' name="nama">
+                            <option>--Nama Pegawai--</option>
                             @foreach ($data as $d )
-                            <option>{{ $d->nama }}</option>
+                            <option>{{ Str::upper($d->nama) }}</option>
                             @endforeach
                         </select>
                     </div>
