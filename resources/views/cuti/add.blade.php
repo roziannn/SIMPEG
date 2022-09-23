@@ -9,14 +9,14 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.12.1/datatables.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css"
         rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
 @endpush
 
 
 {{-- datepicker --}}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
 <style>
     .form-horizontal .control-label-left-left {
@@ -49,41 +49,18 @@
                         <input class="typeahead form-control input-sm required" maxlength="100" placeholder="Nama"
                             id="nama" name="nama" type="text" autocomplete="off">
                     </div> --}}
-                    <select id='sel_emp' style='width: 200px;'>
-                        @foreach ($data as $d )
-                            
-                        <option>{{ $d->nama }}</option>
-                        @endforeach
-                    </select>
+                    <div class="col-sm-4">
+                        <select id='nama' name="nama" style='width: 200px;'>
+                            <option></option>
+                            @foreach ($data as $d )
+                            <option>{{ $d->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <!-- Script -->
-                    <script type="text/javascript">
-                        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-                        $(document).ready(function() {
-
-                            $("#sel_emp").select2({
-                                ajax: {
-                                    url: "{{ route('getEmployees') }}",
-                                    type: "post",
-                                    dataType: 'json',
-                                    delay: 250,
-                                    data: function(params) {
-                                        return {
-                                            _token: CSRF_TOKEN,
-                                            search: params.term // search term
-                                        };
-                                    },
-                                    processResults: function(response) {
-                                        return {
-                                            results: response
-                                        };
-                                    },
-                                    cache: true
-                                }
-                            });
-                        });
-                    </script>
+                
                 </div>
-
+                
 
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="nama">Jabatan</label>

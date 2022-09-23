@@ -30,11 +30,12 @@ class CutiController extends Controller
     public function store(Request $request)
     {
         Cuti::create($request->all());
+        $data = DB::table('pegawais')->orderBy('nama', 'asc')->get();
 
         $request->accepts('session');
         session()->flash('success', 'Berhasil menambahkan data!');
 
-        return view('/cuti.add');
+        return view('/cuti.add', compact('data'));
     }
 
 
