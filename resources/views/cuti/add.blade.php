@@ -56,13 +56,23 @@
                             <option>{{ Str::upper($d->nama) }}</option>
                             @endforeach
                         </select>
-                    </div>       
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label class="control-label-left col-sm-3" for="nama">Jabatan</label>
+                    <label class="col-sm-3 control-label-left-left">Jabatan</label>
                     <div class="col-sm-3">
-                        <input name="jabatan" class="form-control input-sm required" maxlength="100" placeholder="Jabatan"
-                            id="jabatan" type="text" autocomplete="off">
+                        <select class="form-control input-sm required" name="jabatan" id="jabatan">
+                            <option value="">Pilih Jabatan </option>
+                            <option value="DIREKSI">DIREKSI</option>
+                            <option value="DIREKTUR UTAMA">DIREKTUR UTAMA</option>
+                            <option value="DIREKTUR">DIREKTUR</option>
+                            <option value="HR & PERSONALIA">HR & PERSONALIA</option>
+                            <option value="MANAJER">MANAJER</option>
+                            <option value="SUPERVISOR">SUPERVISOR</option>
+                            <option value="STAFF">STAFF</option>
+                            <option value="ADMINISTRASI">ADMINISTRASI</option>
+                        </select>
                     </div>
                 </div>
 

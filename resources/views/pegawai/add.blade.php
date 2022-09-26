@@ -15,17 +15,17 @@
                 <div class="box-header with-border">
                     <div class="btn-group btn-group-vertical">
                         <a href="/data-pegawai" class="btn btn-social btn-flat btn-warning btn-xs"><i
-                        class="fa fa-arrow-circle-o-left"></i> Kembali ke Data Pegawai</a>
+                                class="fa fa-arrow-circle-o-left"></i> Kembali ke Data Pegawai</a>
                     </div>
                 </div>
 
-                @if(session()->has('success'))
-                <div class="box-body">
-                  <div class="alert alert-success alert-dismissible" role="alert">
-                    {{ session('success') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  </div>
-                </div>
+                @if (session()->has('success'))
+                    <div class="box-body">
+                        <div class="alert alert-success alert-dismissible" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        </div>
+                    </div>
                 @endif
 
                 <form action="/store-data-pegawai" method="POST">
@@ -48,20 +48,23 @@
                                 <div class="form-group">
                                     <label for="nama">Nama Lengkap <code> (Tanpa Gelar) </code> </label>
                                     <input id="nama" name="nama" class="form-control input-sm required nama"
-                                    maxlength="100" type="text" placeholder="Nama Lengkap" value="">
+                                        maxlength="100" type="text" placeholder="Nama Lengkap" value="">
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="unitkerja_nama">Unit Kerja </label>
-                                    <select class="form-control input-sm required" name="unitkerja_nama" id="unitkerja_nama">
+                                    <select class="form-control input-sm required" name="unitkerja_nama"
+                                        id="unitkerja_nama">
                                         <option value="">Pilih Unit Kerja </option>
                                         <option value="SEKRETARIAT">SEKRETARIAT</option>
                                         <option value="BIDANG E-GOVERMENT">BIDANG E-GOVERMENT</option>
                                         <option value="BIDANG APLIKAS INFORMATIKA">BIDANG APLIKAS INFORMATIKA</option>
-                                        <option value="UPTD PUSAT LAYANAN DIGITAL DATA">UPTD PUSAT LAYANAN DIGITAL DATA</option>
+                                        <option value="UPTD PUSAT LAYANAN DIGITAL DATA">UPTD PUSAT LAYANAN DIGITAL DATA
+                                        </option>
                                         <option value="BIDANG STATISTIK">BIDANG STATISTIK</option>
-                                        <option value="BIDANG PERSANDIAN DAN KEAMANAN INFORMASI">BIDANG PERSANDIAN DAN KEAMANAN INFORMASI</option>
+                                        <option value="BIDANG PERSANDIAN DAN KEAMANAN INFORMASI">BIDANG PERSANDIAN DAN
+                                            KEAMANAN INFORMASI</option>
                                     </select>
                                 </div>
                             </div>
@@ -69,15 +72,30 @@
                                 <div class="form-group">
                                     <label for="jabatan">Jabatan <code id="tampil_nik" style="display: none;"> (Sementara)
                                         </code></label>
-                                    <input id="jabatan" name="jabatan" class="form-control input-sm required nik"
-                                        type="text" placeholder="Jabatan" value="">
+                                    <select class="form-control input-sm required" name="jabatan" id="jabatan">
+                                        <option value="">Pilih Jabatan </option>
+                                        <option value="DIREKSI">DIREKSI</option>
+                                        <option value="DIREKTUR UTAMA">DIREKTUR UTAMA</option>
+                                        <option value="DIREKTUR">DIREKTUR</option>
+                                        <option value="HR & PERSONALIA">HR & PERSONALIA</option>
+                                        <option value="MANAJER">MANAJER</option>
+                                        <option value="SUPERVISOR">SUPERVISOR</option>
+                                        <option value="STAFF">STAFF</option>
+                                        <option value="ADMINISTRASI">ADMINISTRASI</option>
+                                    </select>
                                 </div>
                             </div>
+
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="status_pegawai">Status Pegawai </label>
-                                    <input id="status_pegawai" name="status_pegawai" class="form-control input-sm required nik"
-                                        type="text" placeholder="Status Pegawai" value="">
+                                    <select class="form-control input-sm required" name="status_pegawai" id="status_pegawai">
+                                        <option value="">Pilih Status Pegawai </option>
+                                        <option value="PNS">PNS</option>
+                                        <option value="Mutasi">Mutasi</option>
+                                        <option value="Karyawan Tetap">Karyawan Tetap</option>
+                                        <option value="Karyawan Kontrak">Karyawan Kontrak</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -97,7 +115,8 @@
                                         <option value="KHATOLIK">KHATOLIK</option>
                                         <option value="HINDU">HINDU</option>
                                         <option value="BUDHA">BUDHA</option>
-                                        <option value="KEPERCAYAAN PADA TUHAN YME/LAINNYA">KEPERCAYAAN PADA TUHAN YME/LAINNYA</option>
+                                        <option value="KEPERCAYAAN PADA TUHAN YME/LAINNYA">KEPERCAYAAN PADA TUHAN
+                                            YME/LAINNYA</option>
                                     </select>
                                 </div>
                             </div>
@@ -120,10 +139,11 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm"><i class="fa fa-times"></i>
+                        <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm"><i
+                                class="fa fa-times"></i>
                             Batal</button>
                         <button type="submit" class="btn btn-social btn-flat btn-info btn-sm pull-right"><i
-                            class="fa fa-check"></i> Simpan</button>
+                                class="fa fa-check"></i> Simpan</button>
                     </div>
                 </form>
             </div>
