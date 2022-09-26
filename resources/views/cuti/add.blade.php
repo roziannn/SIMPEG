@@ -51,17 +51,13 @@
                     </div> --}}
                     <div class="col-sm-3">
                         <select class="form-control input-sm required"  id='nama' name="nama">
-                            <option>--Nama Pegawai--</option>
+                            <option>Nama Pegawai</option>
                             @foreach ($data as $d )
                             <option>{{ Str::upper($d->nama) }}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <!-- Script -->
-                
+                    </div>       
                 </div>
-                
-
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="nama">Jabatan</label>
                     <div class="col-sm-3">

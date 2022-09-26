@@ -18,8 +18,8 @@ use App\Http\Controllers\CovidController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('login.index');
+})->name('login')->middleware('guest');
 
 //Login source
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
