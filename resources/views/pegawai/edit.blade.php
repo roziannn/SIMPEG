@@ -59,13 +59,25 @@
                                     <select class="form-control input-sm required" name="unitkerja_nama" id="unitkerja_nama"
                                         value="{{ $edit->unitkerja_nama }}">
                                         <option value="">Pilih Unit Kerja </option>
-                                        <option value="SEKRETARIAT"{{ $edit->unitkerja_nama == 'SEKRETARIAT' ? 'selected' : '' }}>SEKRETARIAT</option>
-                                        <option value="BIDANG E-GOVERMENT"{{ $edit->unitkerja_nama == 'BIDANG E-GOVERMENT' ? 'selected' : '' }}>BIDANG E-GOVERMENT</option>
-                                        <option value="BIDANG APLIKASI INFORMATIKA"{{ $edit->unitkerja_nama == 'BIDANG APLIKASI INFORMATIKA' ? 'selected' : '' }}>BIDANG APLIKAS INFORMATIKA</option>
-                                        <option value="UPTD PUSAT LAYANAN DIGITAL DATA"{{ $edit->unitkerja_nama == 'UPTD PUSAT LAYANAN DIGITAL DATA' ? 'selected' : '' }}>UPTD PUSAT LAYANAN DIGITAL DATA
+                                        <option
+                                            value="SEKRETARIAT"{{ $edit->unitkerja_nama == 'SEKRETARIAT' ? 'selected' : '' }}>
+                                            SEKRETARIAT</option>
+                                        <option
+                                            value="BIDANG E-GOVERMENT"{{ $edit->unitkerja_nama == 'BIDANG E-GOVERMENT' ? 'selected' : '' }}>
+                                            BIDANG E-GOVERMENT</option>
+                                        <option
+                                            value="BIDANG APLIKASI INFORMATIKA"{{ $edit->unitkerja_nama == 'BIDANG APLIKASI INFORMATIKA' ? 'selected' : '' }}>
+                                            BIDANG APLIKAS INFORMATIKA</option>
+                                        <option
+                                            value="UPTD PUSAT LAYANAN DIGITAL DATA"{{ $edit->unitkerja_nama == 'UPTD PUSAT LAYANAN DIGITAL DATA' ? 'selected' : '' }}>
+                                            UPTD PUSAT LAYANAN DIGITAL DATA
                                         </option>
-                                        <option value="BIDANG STATISTIK"{{ $edit->unitkerja_nama == 'BIDANG STATISTIKA' ? 'selected' : '' }}>BIDANG STATISTIK</option>
-                                        <option value="BIDANG PERSANDIAN DAN KEAMANAN INFORMASI"{{ $edit->unitkerja_nama == 'BIDANG PERSANDIAN DAN KEAMANAN INFORMASI' ? 'selected' : '' }}>BIDANG PERSANDIAN DAN
+                                        <option
+                                            value="BIDANG STATISTIK"{{ $edit->unitkerja_nama == 'BIDANG STATISTIKA' ? 'selected' : '' }}>
+                                            BIDANG STATISTIK</option>
+                                        <option
+                                            value="BIDANG PERSANDIAN DAN KEAMANAN INFORMASI"{{ $edit->unitkerja_nama == 'BIDANG PERSANDIAN DAN KEAMANAN INFORMASI' ? 'selected' : '' }}>
+                                            BIDANG PERSANDIAN DAN
                                             KEAMANAN INFORMASI</option>
                                     </select>
                                 </div>
@@ -73,16 +85,47 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="jabatan">Jabatan </label>
-                                    <input id="jabatan" name="jabatan" class="form-control input-sm required nik"
-                                        type="text" placeholder="Jabatan" value="{{ $edit->jabatan }}">
+                                    <select class="form-control input-sm required" name="jabatan" id="jabatan"
+                                        value="{{ $edit->jabatan }}">
+                                        <option value="">Pilih Jabatan </option>
+                                        <option value="DIREKSI"{{ $edit->jabatan == 'DIREKSI' ? 'selected' : '' }}>DIREKSI
+                                        </option>
+                                        <option
+                                            value="DIREKTUR UTAMA"{{ $edit->jabatan == 'DIREKTUR UTAMA' ? 'selected' : '' }}>
+                                            DIREKTUR UTAMA</option>
+                                        <option value="DIREKTUR"{{ $edit->jabatan == 'DIREKTUR' ? 'selected' : '' }}>
+                                            DIREKTUR</option>
+                                        <option
+                                            value="HR & PERSONALIA"{{ $edit->jabatan == 'HR & PERSONALIA' ? 'selected' : '' }}>
+                                            HR & PERSONALIA</option>
+                                        <option value="MANAJER"{{ $edit->jabatan == 'MANAJER' ? 'selected' : '' }}>MANAJER
+                                        </option>
+                                        <option value="SUPERVISOR"{{ $edit->jabatan == 'SUPERVISOR' ? 'selected' : '' }}>
+                                            SUPERVISOR</option>
+                                        <option value="STAFF"{{ $edit->jabatan == 'STAFF' ? 'selected' : '' }}>STAFF
+                                        </option>
+                                        <option
+                                            value="ADMINISTRASI"{{ $edit->jabatan == 'ADMINISTRASI' ? 'selected' : '' }}>
+                                            ADMINISTRASI</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="status_pegawai">Status Pegawai </label>
-                                    <input id="status_pegawai" name="status_pegawai" class="form-control input-sm"
-                                        type="text" placeholder="Status Pegawai" value="{{ $edit->status_pegawai }}"
-                                        required>
+                                    <select class="form-control input-sm required" name="status_pegawai" id="status_pegawai"
+                                        value="{{ $edit->status_pegawai }}">
+                                        <option value="PNS"{{ $edit->status_pegawai == 'PNS' ? 'selected' : '' }}>PNS
+                                        </option>
+                                        <option value="MUTASI"{{ $edit->status_pegawai == 'MUTASI' ? 'selected' : '' }}>
+                                            MUTASI</option>
+                                        <option
+                                            value="PEGAWAI TETAP"{{ $edit->status_pegawai == 'PEGAWAI TETAP' ? 'selected' : '' }}>
+                                            KARYAWAN TETAP</option>
+                                        <option
+                                            value="PEGAWAI KONTRAK"{{ $edit->status_pegawai == 'PEGAWAI KONTRAK' ? 'selected' : '' }}>
+                                            PEGAWAI KONTRAK</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -95,14 +138,23 @@
                             <div class="col-sm-4">
                                 <div class="form-group">
                                     <label for="agama">Agama </label>
-                                    <select class="form-control input-sm required" id="agama" name="agama" value="{{ $edit->agama }}" required>
+                                    <select class="form-control input-sm required" id="agama" name="agama"
+                                        value="{{ $edit->agama }}" required>
                                         <option value="">Pilih Agama </option>
-                                        <option value="ISLAM"{{ $edit->agama == 'ISLAM' ? 'selected' : '' }}>ISLAM</option>
-                                        <option value="KRISTEN"{{ $edit->agama == 'KRISTEN' ? 'selected' : '' }}>KRISTEN</option>
-                                        <option value="KHATOLIK"{{ $edit->agama == 'KATHOLIK' ? 'selected' : '' }}>KHATOLIK</option>
-                                        <option value="HINDU"{{ $edit->agama == 'HINDU' ? 'selected' : '' }}>HINDU</option>
-                                        <option value="BUDHA"{{ $edit->agama == 'BUDHA' ? 'selected' : '' }}>BUDHA</option>
-                                        <option value="KEPERCAYAAN PADA TUHAN YME/LAINNYA"{{ $edit->agama == 'KEPERCAYAAN PADA TUHAN YME/LAINNYA' ? 'selected' : '' }}>KEPERCAYAAN PADA TUHAN
+                                        <option value="ISLAM"{{ $edit->agama == 'ISLAM' ? 'selected' : '' }}>ISLAM
+                                        </option>
+                                        <option value="KRISTEN"{{ $edit->agama == 'KRISTEN' ? 'selected' : '' }}>KRISTEN
+                                        </option>
+                                        <option value="KHATOLIK"{{ $edit->agama == 'KATHOLIK' ? 'selected' : '' }}>
+                                            KHATOLIK
+                                        </option>
+                                        <option value="HINDU"{{ $edit->agama == 'HINDU' ? 'selected' : '' }}>HINDU
+                                        </option>
+                                        <option value="BUDHA"{{ $edit->agama == 'BUDHA' ? 'selected' : '' }}>BUDHA
+                                        </option>
+                                        <option
+                                            value="KEPERCAYAAN PADA TUHAN YME/LAINNYA"{{ $edit->agama == 'KEPERCAYAAN PADA TUHAN YME/LAINNYA' ? 'selected' : '' }}>
+                                            KEPERCAYAAN PADA TUHAN
                                             YME/LAINNYA</option>
                                     </select>
                                 </div>
@@ -140,7 +192,6 @@
         </div>
         <div class="col-md-3">
             <div class="box box-info">
-
             </div>
         </div>
     </div>
