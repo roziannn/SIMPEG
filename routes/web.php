@@ -70,11 +70,11 @@ Route::get('/home-simpeg', [UserController::class,'widget']);
 //daftar_penerima
 Route::get('/data-vaksin', [CovidController::class, 'index']);
 Route::get('/data-vaksin/form', [CovidController::class, 'add_daftar_penerima']);
+Route::post('/store-data-penerima-vaksin', [CovidController::class, 'store_penerima']);
 
 
 //rekap_penerima
 Route::get('/data-vaksin/rekap_vaksin', [CovidController::class, 'rekap']);
-
 
 
 

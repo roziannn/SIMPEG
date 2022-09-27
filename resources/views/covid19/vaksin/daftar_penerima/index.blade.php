@@ -51,13 +51,13 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="table-responsive">
-                                    <table id="table-data" class="table table-bordered dataTable table-striped  table-hover">
+                                    <table id="table-data"
+                                        class="table table-bordered dataTable table-striped  table-hover">
                                         <thead class="bg-gray color-palette">
                                             <tr>
-                                                <th>No</th>
-                                                <th>Aksi</th>
-                                                <th>NIP</th>
-                                                <th>Nama</th>
+                                                <th style="text-align:center">No</th>
+                                                <th style="text-align:center">Aksi</th>
+                                                <th style="text-align:center">NIP - Nama</th>
                                                 <th>Jabatan</th>
                                                 <th>Unit Kerja</th>
                                                 <th>Nomor Telepon</th>
@@ -66,11 +66,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Lorem ipsum dolor sit amet.</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, veritatis.</td>
-                                            </tr>
+                                            @php $i=1 @endphp
+                                            @foreach ($penerima as $item)
+                                                <tr>
+                                                    <td>{{ $i++ }}</td>
+                                                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt,
+                                                        veritatis.</td>
+                                                    <td>{{ $item->nama }}</td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

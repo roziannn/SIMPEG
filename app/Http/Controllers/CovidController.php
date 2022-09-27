@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Covid;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CovidController extends Controller
 {
@@ -13,16 +16,34 @@ class CovidController extends Controller
      */
     public function index()
     {
-        return view('covid19.vaksin.daftar_penerima.index');
+        $penerima = DB::table('covids')->orderBy('nama', 'asc')->get();
+
+        return view('covid19.vaksin.daftar_penerima.index', compact('penerima'));
     }
     public function rekap()
     {
         return view('covid19.vaksin.rekap_penerima.rekap');
     }
 
+    //while click button add
     public function add_daftar_penerima(){
-        return view('covid19.vaksin.daftar_penerima.add');
+
+        $data = DB::table('pegawais')->orderBy('nama', 'asc')->get();
+        return view('covid19.vaksin.daftar_penerima.add', compact('data'));
     }
+
+    public function store_penerima(Request $request){
+
+        Covid::create($request->all());
+        $data = DB::table('pegawais')->orderBy('nama', 'asc')->get();
+
+        $request->accepts('session');
+        session()->flash('success', 'Berhasil menambahkan data!');
+
+        return view('/covid19.vaksin.daftar_penerima.add', compact('data'));
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
