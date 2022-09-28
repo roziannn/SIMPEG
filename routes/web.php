@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\CutiController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CutiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\CovidController;
@@ -56,12 +56,9 @@ Route::get('/tambah_data_cuti', [CutiController::class, 'add']);
 Route::post('/store-data-cuti', [CutiController::class, 'store']);
 Route::get('/delete-cuti/{id}', [CutiController::class, 'delete']);
 
-Route::post('/getEmployees', [CutiController::class, 'getEmployees'])->name('getEmployees');
 
 Route::match(['get', 'post'], '/edit-cuti{id}', [CutiController::class,'edit']);
 Route::post('/edit-cuti/{id}', [CutiController::class,'update']);
-
-Route::get('autocomplete', [CutiController::class, 'autocomplete'])->name('autocomplete'); 
 
 //home-widget
 Route::get('/home-simpeg', [UserController::class,'widget']);

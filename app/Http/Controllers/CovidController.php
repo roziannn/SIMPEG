@@ -32,14 +32,6 @@ class CovidController extends Controller
         return view('covid19.vaksin.daftar_penerima.add', compact('data'));
     }
 
-    public function getjabatan(){
-        $nama = $_POST['nama'];
-        $s = "SELECT jabatan as jabatanKu from pegawais where nama='$nama'";
-        $res = $this->db->query($s)->row_array();
-
-        echo json_encode($res);
-    }
-
     public function store_penerima(Request $request){
 
         Covid::create($request->all());

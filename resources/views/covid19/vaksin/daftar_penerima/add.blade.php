@@ -80,19 +80,4 @@
             });
         });
     </script>
-   
-    <script type="text/javascript">
-        function nama_pegawai() {
-            var nama = $("#nama").val();
-            $.ajax({
-                type: "POST",
-                url: '{{route('jabatan_pegawai')}}',
-                data: "nama=" + nama,
-                dataType: 'json',
-                success: function(data) {
-                    $("#jabatan").val(data.jabatanKu);
-                }
-            })
-        }
-    </script>
 @endpush

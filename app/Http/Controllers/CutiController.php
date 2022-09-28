@@ -78,10 +78,4 @@ class CutiController extends Controller
         return redirect('/data-cuti')->with('successDelete', 'Data has been deleted!');
     }
 
-    public function autocomplete(Request $request)
-    {
-        $query = $request->get('query');
-        $filterResult = Pegawai::where('nama', 'LIKE', '%' . $query . '%')->get('nama');
-        return response()->json($filterResult);
-    }
 }
