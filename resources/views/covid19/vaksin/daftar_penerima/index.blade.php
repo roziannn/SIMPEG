@@ -44,8 +44,8 @@
                 <div class="box-header with-border">
                     <div class="btn-group btn-group-vertical">
                         <a href="/data-vaksin/form" title="Tambah Daftar Penerima"
-                        class="btn btn-social btn-flat bg-olive btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"><i
-                        class="fa fa-plus"></i> Tambah Data</a>
+                            class="btn btn-social btn-flat bg-olive btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"><i
+                                class="fa fa-plus"></i> Tambah Data</a>
                     </div>
                 </div>
                 <div class="box-body">
@@ -73,13 +73,37 @@
                                             @foreach ($penerima as $item)
                                                 <tr>
                                                     <td>{{ $i++ }}</td>
-                                                    <td>Lorem </td>
-                                                    <td>{{ $item->nip}}</td>
-                                                    <td>{{ $item->nama}}</td>
-                                                    <td>{{ $item->jabatan}}</td>
-                                                    <td>{{ $item->unitkerja_nama}}</td>
-                                                    <td>{{ $item->no_telp}}</td>
-                                                    <td>{{ $item->alamat}}</td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <button type="button"
+                                                                class="btn btn-social btn-flat btn-info btn-xs"
+                                                                data-toggle="dropdown" aria-expanded="false"><i
+                                                                    class="fa fa-arrow-circle-down"></i> Pilih Aksi
+                                                            </button>
+                                                            <ul class="dropdown-menu" role="menu">
+                                                                <li>
+                                                                    <a href="#"
+                                                                        class="btn btn-social btn-flat btn-block btn-xs"
+                                                                        data-toggle="modal"
+                                                                        data-target="#modal-info{{ $item->nip }}"><i
+                                                                            class="fa fa-edit"></i>Ubah Data</a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#"
+                                                                        class="btn btn-social btn-flat btn-block btn-xs"data-toggle="modal"
+                                                                        data-target="#modal-danger{{ $item->nip }}"><i
+                                                                            class="fa fa-trash"></i>Hapus Data
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{ $item->nip }}</td>
+                                                    <td>{{ $item->nama }}</td>
+                                                    <td>{{ $item->jabatan }}</td>
+                                                    <td>{{ $item->unitkerja_nama }}</td>
+                                                    <td>{{ $item->no_telp }}</td>
+                                                    <td>{{ $item->alamat }}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>
@@ -89,6 +113,31 @@
                         </div>
                     </div>
                 </div>
+                {{-- danger modal --}}
+                @foreach ($data as $item)
+                    <div class="modal modal-danger fade" id="modal-danger{{ $item->nip }}">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">Konfirmasi</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{ url('delete-penerima/' . $item->id) }}" method="GET">
+                                        {{ csrf_field() }}
+                                        <p>Yakin ingin menghapus data?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline pull-left"
+                                        data-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-outline">Hapus</button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>

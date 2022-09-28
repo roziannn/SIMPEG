@@ -20,7 +20,9 @@ class CovidController extends Controller
         $penerima = DB::select('SELECT pegawais.nip, pegawais.nama, pegawais.jabatan, pegawais.unitkerja_nama, pegawais.no_telp, pegawais.alamat, covids.nip from pegawais, covids where pegawais.nip
         = covids.nip');
 
-        return view('covid19.vaksin.daftar_penerima.index',(compact('penerima')));
+        $data = DB::select("SELECT * FROM covids");
+
+        return view('covid19.vaksin.daftar_penerima.index',(compact('penerima', 'data')));
     }
     public function rekap()
     {
@@ -44,6 +46,14 @@ class CovidController extends Controller
 
         return view('/covid19.vaksin.daftar_penerima.add', compact('data'));
 
+    }
+
+    public function delete_penerima($id)
+    {
+        $data = Covid::find($id);
+        $data->delete();
+
+        return redirect('/data-vaksin')->with('successDelete', 'Data has been deleted!');
     }
 
     /**

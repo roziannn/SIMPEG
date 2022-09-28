@@ -68,6 +68,7 @@ Route::get('/home-simpeg', [UserController::class,'widget']);
 Route::get('/data-vaksin', [CovidController::class, 'index']);
 Route::get('/data-vaksin/form', [CovidController::class, 'add_daftar_penerima']);
 Route::post('/store-data-penerima-vaksin', [CovidController::class, 'store_penerima']);
+Route::get('/delete-penerima/{id}', [CovidController::class, 'delete_penerima']);
 
 Route::post('/jabatan_pegawai', 'CovidController@getjabatan')->name('jabatan_pegawai');
 

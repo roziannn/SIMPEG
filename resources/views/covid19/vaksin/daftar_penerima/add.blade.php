@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="nama">NIP</label>
                     <div class="col-sm-3">
-                        <select class="form-control select2" style="width: 290px" id='nip' name="nip" required>
+                        <select class="form-control input-group-sm select2" id='nip' name="nip" required>
                             <option>-- Cari NIP Pegawai --</option>
                             @foreach ($data as $d)
                                 <option>{{ $d->nip }}</option>
@@ -63,7 +63,7 @@
                             <input type="date" class="form-control">
                         </div>
                     </div>
-                    <div class="col-sm-3">
+                    {{-- <div class="col-sm-3">
                         <div class="input-group input-group-sm date" >
                             <div class="input-group-addon">Jenis Vaksin</div>
                             <select class="form-control select2"  data-placeholder="-- Pilih Jenis Vaksin --" id="jenis_vaksin_1" name="jenis_vaksin_1" data-select2-id="jenis_vaksin_1" tabindex="-1" aria-hidden="true">
@@ -80,26 +80,34 @@
                                 <option value="Biofarma" data-select2-id="26">Biofarma</option>
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
+
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="lama_terbilang">Vaksin Dosis 2</label>
                     <div class="col-sm-3">
-                        <div class="input-group">
+                        <div class="input-group input-group-sm date">
                             <span class="input-group-addon">
                                 <input type="checkbox">
                             </span>
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i> Tanggal Vaksin
+                            </div>
                             <input type="date" class="form-control">
                         </div>
                     </div>
                 </div>
+             
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="lama_terbilang">Vaksin Dosis 3</label>
                     <div class="col-sm-3">
-                        <div class="input-group">
+                        <div class="input-group input-group-sm date">
                             <span class="input-group-addon">
                                 <input type="checkbox">
                             </span>
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i> Tanggal Vaksin
+                            </div>
                             <input type="date" class="form-control">
                         </div>
                     </div>
@@ -120,13 +128,13 @@
     .select2.select2-container {
   width: 100% !important;
 }
-
+/* field */
 .select2.select2-container .select2-selection {
   border: 1px solid #ccc;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
-  border-radius: 3px;
-  height: 34px;
+  border-radius: 1px;
+  height: 32px;
   margin-bottom: 15px;
   outline: none !important;
   transition: all .15s ease-in-out;
@@ -138,13 +146,14 @@
   padding-right: 33px;
 }
 
+/* arrow */
 .select2.select2-container .select2-selection .select2-selection__arrow {
   background: #f8f8f8;
   border-left: 1px solid #ccc;
   -webkit-border-radius: 0 3px 3px 0;
   -moz-border-radius: 0 3px 3px 0;
   border-radius: 0 3px 3px 0;
-  height: 32px;
+  height: 30px;
   width: 33px;
 }
 
