@@ -10,6 +10,6 @@ class Covid extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nama',
+        'nip',
     ];
 }

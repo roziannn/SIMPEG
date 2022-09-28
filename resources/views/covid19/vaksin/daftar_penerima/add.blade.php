@@ -20,9 +20,11 @@
 @section('content')
     <div class="box box-info">
         <div class="box-header with-border">
-            <a href="/data-vaksin"
+            <div class="btn-group btn-group-vertical">
+                <a href="/data-vaksin"
                 class="btn btn-social btn-flat btn-info btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"
                 title="Kembali Ke Data Vaksin"><i class="fa fa-arrow-circle-o-left"></i> Kembali Ke Data Vaksin</a>
+            </div>
         </div>
 
         @if (session()->has('success'))
@@ -40,24 +42,14 @@
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="nama">Nama</label>
                     <div class="col-sm-3">
-                        <select class="js-example-responsive" style="width: 100%"  id='nama' name="nama" onchange="nama_pegawai()" required>
+                        <select class="js-example-responsive" style="width: 360px"  id='nip' name="nip" onchange="nama_pegawai()" required>
                             <option>-- NAMA PEGAWAI --</option>
                             @foreach ($data as $d)
-                                <option>{{ Str::upper($d->nama) }}</option>
+                                <option>{{ $d->nip }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
-
-                <div class="form-group">
-                    <label class="col-sm-3 control-label-left-left">Jabatan</label>
-                    <div class="col-sm-3">
-                        <input class="typeahead form-control input-sm required" maxlength="100" placeholder="Jabatan"
-                            id="jabatan" name="jabatan" type="text">
-                    </div>
-                </div>
-
-
             </div>
             <div class="box-footer">
                 <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm"><i class="fa fa-times"></i>
@@ -75,7 +67,7 @@
     {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.3/select2.min.js"></script> --}}
     <script type="text/javascript">
         $(document).ready(function() {
-            $("#nama").select2({
+            $("#nip").select2({
                 placeholder: "search here",
             });
         });

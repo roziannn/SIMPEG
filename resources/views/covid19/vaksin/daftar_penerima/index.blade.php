@@ -42,9 +42,11 @@
         <div class="col-md-4 col-lg-9">
             <div class="box box-info">
                 <div class="box-header with-border">
-                    <a href="/data-vaksin/form" title="Tambah Daftar Penerima"
+                    <div class="btn-group btn-group-vertical">
+                        <a href="/data-vaksin/form" title="Tambah Daftar Penerima"
                         class="btn btn-social btn-flat bg-olive btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"><i
-                            class="fa fa-plus"></i> Tambah Data</a>
+                        class="fa fa-plus"></i> Tambah Data</a>
+                    </div>
                 </div>
                 <div class="box-body">
                     <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
@@ -57,7 +59,8 @@
                                             <tr>
                                                 <th style="text-align:center">No</th>
                                                 <th style="text-align:center">Aksi</th>
-                                                <th style="text-align:center">NIP - Nama</th>
+                                                <th style="text-align:center">NIP</th>
+                                                <th style="text-align:center">Nama</th>
                                                 <th>Jabatan</th>
                                                 <th>Unit Kerja</th>
                                                 <th>Nomor Telepon</th>
@@ -70,9 +73,13 @@
                                             @foreach ($penerima as $item)
                                                 <tr>
                                                     <td>{{ $i++ }}</td>
-                                                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt,
-                                                        veritatis.</td>
-                                                    <td>{{ $item->nama }}</td>
+                                                    <td>Lorem </td>
+                                                    <td>{{ $item->nip}}</td>
+                                                    <td>{{ $item->nama}}</td>
+                                                    <td>{{ $item->jabatan}}</td>
+                                                    <td>{{ $item->unitkerja_nama}}</td>
+                                                    <td>{{ $item->no_telp}}</td>
+                                                    <td>{{ $item->alamat}}</td>
                                                 </tr>
                                             @endforeach
                                         </tbody>

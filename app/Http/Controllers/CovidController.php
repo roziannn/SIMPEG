@@ -16,9 +16,11 @@ class CovidController extends Controller
      */
     public function index()
     {
-        $penerima = DB::table('covids')->orderBy('nama', 'asc')->get();
+        // $penerima = DB::select('SELECT * FROM covids order by nip asc');
+        $penerima = DB::select('SELECT pegawais.nip, pegawais.nama, pegawais.jabatan, pegawais.unitkerja_nama, pegawais.no_telp, pegawais.alamat, covids.nip from pegawais, covids where pegawais.nip
+        = covids.nip');
 
-        return view('covid19.vaksin.daftar_penerima.index', compact('penerima'));
+        return view('covid19.vaksin.daftar_penerima.index',(compact('penerima')));
     }
     public function rekap()
     {
