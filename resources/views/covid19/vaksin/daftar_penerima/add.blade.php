@@ -1,12 +1,13 @@
 @extends('layouts.master')
 <link rel="icon" href="">
-
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 @section('title')
     Tambahkan Pegawai Penerima Vaksin
 @endsection
 
 @push('css')
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.3/select2.min.css">
+    {{-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.3/select2.min.css"> --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
 @endpush
 
 
@@ -38,22 +39,24 @@
             <div class="box-body">
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="nama">Nama</label>
-                    <div class="col-sm-4">
-                        <select class="form-control select2-sm required" id='nama' name="nama" required>
-                            <option>-- Nama Pegawai --</option>
+                    <div class="col-sm-3">
+                        <select class="js-example-responsive" style="width: 100%"  id='nama' name="nama" onchange="nama_pegawai()" required>
+                            <option>-- NAMA PEGAWAI --</option>
                             @foreach ($data as $d)
                                 <option>{{ Str::upper($d->nama) }}</option>
                             @endforeach
                         </select>
-                        
                     </div>
-                    
-
-                    {{-- <div class="col-sm-4">
-                        <input class="typeahead form-control input-sm required" maxlength="100" placeholder="Nama"
-                            id="nama" name="nama" type="text" autocomplete="off">
-                    </div> --}}
                 </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label-left-left">Jabatan</label>
+                    <div class="col-sm-3">
+                        <input class="typeahead form-control input-sm required" maxlength="100" placeholder="Jabatan"
+                            id="jabatan" name="jabatan" type="text">
+                    </div>
+                </div>
+
 
             </div>
             <div class="box-footer">
@@ -67,17 +70,29 @@
 @endsection
 
 @push('scripts')
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.3/select2.min.js"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    {{-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.3/select2.min.js"></script> --}}
     <script type="text/javascript">
         $(document).ready(function() {
             $("#nama").select2({
                 placeholder: "search here",
-                allowClear: true,
-                matcher: function(term, text) {
-                    return text.toUpperCase().indexOf(term.toUpperCase()) == 0;
-                }
             });
         });
+    </script>
+   
+    <script type="text/javascript">
+        function nama_pegawai() {
+            var nama = $("#nama").val();
+            $.ajax({
+                type: "POST",
+                url: '{{route('jabatan_pegawai')}}',
+                data: "nama=" + nama,
+                dataType: 'json',
+                success: function(data) {
+                    $("#jabatan").val(data.jabatanKu);
+                }
+            })
+        }
     </script>
 @endpush
