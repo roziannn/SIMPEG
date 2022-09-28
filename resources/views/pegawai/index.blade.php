@@ -35,8 +35,13 @@
             <div class="box box-info">
                 <div class="box-header with-border">
                     <div class="btn-group btn-group-vertical">
-                        <a href="/data-pegawai/tambah_data_pegawai" class="btn btn-social btn-flat btn-success btn-xs" title="Tambah Data"><i
-                                class="fa fa-plus"></i> Tambah Data Pegawai
+                        <a href="/data-pegawai/tambah_data_pegawai" class="btn btn-social btn-flat btn-success btn-xs" title="Tambah Data">
+                            <i class="fa fa-plus"></i> Tambah Data Pegawai
+                        </a>
+                    </div>
+                    <div class="btn-group btn-group-vertical">
+                        <a href="/data-pegawai/cetak_pdf"  target="_blank" class="btn btn-social btn-flat bg-maroon btn-xs" title="Download PDF">
+                            <i class="fa fa-file-pdf-o"></i> Unduh Data
                         </a>
                     </div>
                 </div>

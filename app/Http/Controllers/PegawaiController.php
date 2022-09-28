@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pegawai;
+use Barryvdh\DomPDF\Facade\Pdf as FacadePdf;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -72,5 +74,13 @@ class PegawaiController extends Controller
         return redirect('/data-pegawai')->with('successDelete', 'Data has been deleted!');
     }
 
-   
+    public function cetak_pdf()
+{
+	$pegawai = Pegawai::all();
+ 
+	$pdf = FacadePdf::loadview('/pegawai/pdf',['pegawai'=>$pegawai]);
+    
+	return $pdf->download('laporan-pegawai-pdf');
+}
+  
 }

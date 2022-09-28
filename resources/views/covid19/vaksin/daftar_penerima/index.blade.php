@@ -61,11 +61,11 @@
                                                 <th style="text-align:center">Aksi</th>
                                                 <th style="text-align:center">NIP</th>
                                                 <th style="text-align:center">Nama</th>
-                                                <th>Jabatan</th>
-                                                <th>Unit Kerja</th>
-                                                <th>Nomor Telepon</th>
-                                                <th>Alamat</th>
-                                                <th>Keterangan</th>
+                                                <th style="text-align:center">Jabatan</th>
+                                                <th style="text-align:center">Unit Kerja</th>
+                                                <th style="text-align:center">Nomor Telepon</th>
+                                                <th style="text-align:center">Alamat</th>
+                                                <th style="text-align:center">Keterangan</th>
                                             </tr>
                                         </thead>
                                         <tbody>

@@ -72,9 +72,11 @@ Route::get('/delete-penerima/{id}', [CovidController::class, 'delete_penerima'])
 
 Route::post('/jabatan_pegawai', 'CovidController@getjabatan')->name('jabatan_pegawai');
 
-
 //rekap_penerima
 Route::get('/data-vaksin/rekap_vaksin', [CovidController::class, 'rekap']);
+
+//pdf downlaod
+Route::get('/data-pegawai/cetak_pdf', [PegawaiController::class, 'cetak_pdf']);
 
 
 
