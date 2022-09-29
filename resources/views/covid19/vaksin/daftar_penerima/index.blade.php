@@ -104,6 +104,11 @@
                                                     <td>{{ $item->unitkerja_nama }}</td>
                                                     <td>{{ $item->no_telp }}</td>
                                                     <td>{{ $item->alamat }}</td>
+                                                    @if($item->vaksin1 == 'on')
+                                                        <td>Sudah Vaksin 1</td>
+                                                    @else
+                                                        <td></td>
+                                                    @endif
                                                 </tr>
                                             @endforeach
                                         </tbody>

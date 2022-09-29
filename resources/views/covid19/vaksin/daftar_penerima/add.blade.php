@@ -109,7 +109,7 @@
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i> Tanggal Vaksin
                             </div>
-                            <input type="date" class="form-control" id="tglVaksin3" disabled>
+                            <input type="date" class="form-control" id="tglVaksin3" name="tglVaksin3" disabled>
                         </div>
                     </div>
                 </div>
