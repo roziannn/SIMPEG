@@ -42,49 +42,39 @@
         {{-- table --}}
         <div class="col-md-4 col-lg-9">
             <div class="box box-info">
-                <div class="box-header with-border">
-                    <a href="#" title="Tambah Daftar Penerima"
-                        class="btn btn-social btn-flat bg-olive btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"><i
-                            class="fa fa-plus"></i> Tambah Data</a>
-                </div>
                 <div class="box-body">
                     <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="table-responsive">
-                                    <table id="table-data"
-                                        class="table table-bordered dataTable table-striped  table-hover" style="width:100%">
+                                    <table id="table-data" class="table table-bordered dataTable table-striped  table-hover" style="width:100%">
                                         <thead class="bg-gray color-palette">
                                             <tr>
                                                 <th style="text-align:center" rowspan="2">No</th>
-                                                <th style="text-align:center" rowspan="2">NIP</th>
-                                                <th style="text-align:center" rowspan="2">Nama</th>
-                                                <th style="text-align:center" rowspan="2">Jabatan</th>
                                                 <th style="text-align:center" rowspan="2">Unit Kerja</th>
-                                                <th style="text-align:center" rowspan="2">No Telepon</th>
-                                                <th style="text-align:center" rowspan="2">Jenis Kelamin</th>
-                                                <th style="text-align:center" colspan="5">Vaksin</th>
+                                                <th style="text-align:center" colspan="4">Penerima Dosis Vaksin <br>(Perorang)</th>
+                                                <th style="text-align:center" rowspan="2">Total</th>
                                             </tr>
                                             <tr>
-                                                <td>I</td>
-                                                <td>II</td>
-                                                <td>III</td>
-                                                <td>Belum</td>
-                                                <td>Ket</td>
+                                                <td  style="text-align:center">I</td>
+                                                <td  style="text-align:center">II</td>
+                                                <td  style="text-align:center">III</td>
+                                                <td  style="text-align:center">Ket</td>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @php $i=1 @endphp
+                                            @foreach ($data as $item)
                                             <tr>
-                                                <td>1</td>
-                                                <td>Lorem ipsum dolor sit amet.</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt,
-                                                    veritatis.</td>
-                                                <td>Lorem, ipsum.</td>
-                                                <td>Lorem.</td>
-                                                <td>Lorem.</td>
-                                                <td>Lorem.</td>
-                                                <td>Lorem ipsum dolor sit amet.</td>
+                                                <td>{{ $i++ }}</td>
+                                                <td>{{ $item->unitkerja_nama }}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>{{ $item->total }}</td>
                                             </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

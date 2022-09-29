@@ -22,21 +22,28 @@ class CovidController extends Controller
 
         $data = DB::select("SELECT * FROM covids");
 
-        return view('covid19.vaksin.daftar_penerima.index',(compact('penerima', 'data')));
+        return view('covid19.vaksin.daftar_penerima.index', (compact('penerima', 'data')));
     }
     public function rekap()
     {
-        return view('covid19.vaksin.rekap_penerima.rekap');
+
+        //count total per- satu unit
+        $data = DB::select('SELECT pegawais.unitkerja_nama, count(pegawais.unitkerja_nama) as total from pegawais, covids  where pegawais.nip
+        = covids.nip group by unitkerja_nama');
+
+        return view('covid19.vaksin.rekap_penerima.rekap', compact('data'));
     }
 
     //while click button add
-    public function add_daftar_penerima(){
+    public function add_daftar_penerima()
+    {
 
         $data = DB::table('pegawais')->orderBy('nama', 'asc')->get();
         return view('covid19.vaksin.daftar_penerima.add', compact('data'));
     }
 
-    public function store_penerima(Request $request){
+    public function store_penerima(Request $request)
+    {
 
         Covid::create($request->all());
 
@@ -46,7 +53,6 @@ class CovidController extends Controller
         session()->flash('success', 'Berhasil menambahkan data!');
 
         return view('/covid19.vaksin.daftar_penerima.add', compact('data'));
-
     }
 
     public function delete_penerima($id)

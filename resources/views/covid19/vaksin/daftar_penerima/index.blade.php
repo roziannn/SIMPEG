@@ -53,7 +53,7 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="table-responsive">
-                                    <table id="table-data"
+                                    <table id="myTable"
                                         class="table table-bordered dataTable table-striped  table-hover">
                                         <thead class="bg-gray color-palette">
                                             <tr>
@@ -105,11 +105,11 @@
                                                     <td>{{ $item->no_telp }}</td>
                                                     <td>{{ $item->alamat }}</td>
                                                     @if($item->vaksin3 != null)
-                                                        <td>Sudah Vaksin 3</td>
+                                                        <td>Sudah Vaksin ke 3</td>
                                                     @elseif($item->vaksin2 != null)
-                                                        <td>Sudah Vaksin 2</td>
+                                                        <td>Sudah Vaksin ke 2</td>
                                                     @elseif($item->vaksin1 != null)
-                                                        <td>Sudah Vaksin 1</td>
+                                                        <td>Sudah Vaksin ke 1</td>
                                                     @else
                                                         <td></td>
                                                     @endif
@@ -152,4 +152,12 @@
     </div>
 @endsection
 
-<script></script>
+@push('scripts')
+<script>
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.12.1/datatables.min.js"></script>
+@endpush

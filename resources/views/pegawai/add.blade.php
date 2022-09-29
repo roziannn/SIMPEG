@@ -59,7 +59,7 @@
                                         <option value="">Pilih Unit Kerja </option>
                                         <option value="SEKRETARIAT">SEKRETARIAT</option>
                                         <option value="BIDANG E-GOVERMENT">BIDANG E-GOVERMENT</option>
-                                        <option value="BIDANG APLIKAS INFORMATIKA">BIDANG APLIKAS INFORMATIKA</option>
+                                        <option value="BIDANG APLIKASI INFORMATIKA">BIDANG APLIKASI INFORMATIKA</option>
                                         <option value="UPTD PUSAT LAYANAN DIGITAL DATA">UPTD PUSAT LAYANAN DIGITAL DATA
                                         </option>
                                         <option value="BIDANG STATISTIK">BIDANG STATISTIK</option>
