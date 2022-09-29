@@ -11,5 +11,11 @@ class Covid extends Model
 
     protected $fillable = [
         'nip',
+        'vaksin1',
+        'vaksin2',
+        'vaksin3',
+        'tglVaksin1',
+        'tglVaksin2',
+        'tglVaksin3',
     ];
 }

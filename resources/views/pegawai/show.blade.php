@@ -35,7 +35,7 @@
                                         <tr>
                                             <td width="300">Nama</td>
                                             <td width="1">:</td>
-                                            <td><strong>{{ Str::upper($pegawai->nama) }}</strong></td>
+                                            <td><strong>{{ $pegawai->nama }}</strong></td>
                                         </tr>
                                         <tr>
                                             <td>Detail Kepegawaian</td><td>:</td>

@@ -39,8 +39,9 @@ class CovidController extends Controller
     public function store_penerima(Request $request){
 
         Covid::create($request->all());
-        $data = DB::table('pegawais')->orderBy('nama', 'asc')->get();
 
+        $data = DB::table('pegawais')->orderBy('nama', 'asc')->get();
+        
         $request->accepts('session');
         session()->flash('success', 'Berhasil menambahkan data!');
 

@@ -53,7 +53,7 @@
                         <select class="form-control input-sm required"  id='nama' name="nama">
                             <option>Nama Pegawai</option>
                             @foreach ($data as $d )
-                            <option>{{ Str::upper($d->nama) }}</option>
+                            <option>{{ $d->nama}}</option>
                             @endforeach
                         </select>
                     </div>

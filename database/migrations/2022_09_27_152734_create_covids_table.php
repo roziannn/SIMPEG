@@ -16,6 +16,12 @@ return new class extends Migration
         Schema::create('covids', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('nip');
+            $table->string('vaksin1')->nullable();;
+            $table->string('vaksin2')->nullable();;
+            $table->string('vaksin3')->nullable();;
+            $table->string('tglVaksin1')->nullable();
+            $table->string('tglVaksin2')->nullable();
+            $table->string('tglVaksin3')->nullable();
             $table->timestamps();
         });
     }

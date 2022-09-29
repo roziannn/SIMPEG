@@ -42,7 +42,7 @@
                     <label class="control-label-left col-sm-3" for="nama">NIP</label>
                     <div class="col-sm-3">
                         <select class="form-control input-group-sm select2" id='nip' name="nip" required>
-                            <option>-- Cari NIP Pegawai --</option>
+                            <option></option>
                             @foreach ($data as $d)
                                 <option>{{ $d->nip }}</option>
                             @endforeach
@@ -55,13 +55,14 @@
                     <div class="col-sm-3">
                         <div class="input-group input-group-sm date">
                             <span class="input-group-addon">
-                                <input type="checkbox">
+                                <input type="checkbox" name="vaksin1" id="vaksin1" onclick="enableVaksin1()">
                             </span>
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i> Tanggal Vaksin
                             </div>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" id="tglVaksin1" name="tglVaksin1" disabled>
                         </div>
+
                     </div>
                     {{-- <div class="col-sm-3">
                         <div class="input-group input-group-sm date" >
@@ -88,31 +89,54 @@
                     <div class="col-sm-3">
                         <div class="input-group input-group-sm date">
                             <span class="input-group-addon">
-                                <input type="checkbox">
+                                <input type="checkbox" name="vaksin2" id="vaksin2" onclick="enableVaksin2()">
                             </span>
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i> Tanggal Vaksin
                             </div>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" id="tglVaksin2" name="tglVaksin2" disabled>
                         </div>
                     </div>
                 </div>
-             
+
                 <div class="form-group">
                     <label class="control-label-left col-sm-3" for="lama_terbilang">Vaksin Dosis 3</label>
                     <div class="col-sm-3">
                         <div class="input-group input-group-sm date">
                             <span class="input-group-addon">
-                                <input type="checkbox">
+                                <input type="checkbox" name="vaksin3" id="vaksin3" onclick="enableVaksin3()">
                             </span>
                             <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i> Tanggal Vaksin
                             </div>
-                            <input type="date" class="form-control">
+                            <input type="date" class="form-control" id="tglVaksin3" disabled>
                         </div>
                     </div>
                 </div>
-
+                {{-- checkbox disable/enable for tanggal vaksin --}}
+                <script type="text/javascript">
+                    function enableVaksin1() {
+                        if (document.getElementById("vaksin1").checked) {
+                            document.getElementById("tglVaksin1").disabled = false;
+                        } else {
+                            document.getElementById("tglVaksin1").disabled = true;
+                        }
+                    }
+                    function enableVaksin2() {
+                        if (document.getElementById("vaksin2").checked) {
+                            document.getElementById("tglVaksin2").disabled = false;
+                        } else {
+                            document.getElementById("tglVaksin2").disabled = true;
+                        }
+                    }
+                    function enableVaksin3() {
+                        if (document.getElementById("vaksin3").checked) {
+                            document.getElementById("tglVaksin3").disabled = false;
+                        } else {
+                            document.getElementById("tglVaksin3").disabled = true;
+                        }
+                    }
+                </script>
 
             </div>
             <div class="box-footer">
@@ -126,137 +150,137 @@
 @endsection
 <style>
     .select2.select2-container {
-  width: 100% !important;
-}
-/* field */
-.select2.select2-container .select2-selection {
-  border: 1px solid #ccc;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 1px;
-  height: 32px;
-  margin-bottom: 15px;
-  outline: none !important;
-  transition: all .15s ease-in-out;
-}
+        width: 100% !important;
+    }
 
-.select2.select2-container .select2-selection .select2-selection__rendered {
-  color: #333;
-  line-height: 32px;
-  padding-right: 33px;
-}
+    /* field */
+    .select2.select2-container .select2-selection {
+        border: 1px solid #ccc;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 1px;
+        height: 32px;
+        margin-bottom: 15px;
+        outline: none !important;
+        transition: all .15s ease-in-out;
+    }
 
-/* arrow */
-.select2.select2-container .select2-selection .select2-selection__arrow {
-  background: #f8f8f8;
-  border-left: 1px solid #ccc;
-  -webkit-border-radius: 0 3px 3px 0;
-  -moz-border-radius: 0 3px 3px 0;
-  border-radius: 0 3px 3px 0;
-  height: 30px;
-  width: 33px;
-}
+    .select2.select2-container .select2-selection .select2-selection__rendered {
+        color: #333;
+        line-height: 32px;
+        padding-right: 33px;
+    }
 
-.select2.select2-container.select2-container--open .select2-selection.select2-selection--single {
-  background: #f8f8f8;
-}
+    /* arrow */
+    .select2.select2-container .select2-selection .select2-selection__arrow {
+        background: #f8f8f8;
+        border-left: 1px solid #ccc;
+        -webkit-border-radius: 0 3px 3px 0;
+        -moz-border-radius: 0 3px 3px 0;
+        border-radius: 0 3px 3px 0;
+        height: 30px;
+        width: 33px;
+    }
 
-.select2.select2-container.select2-container--open .select2-selection.select2-selection--single .select2-selection__arrow {
-  -webkit-border-radius: 0 3px 0 0;
-  -moz-border-radius: 0 3px 0 0;
-  border-radius: 0 3px 0 0;
-}
+    .select2.select2-container.select2-container--open .select2-selection.select2-selection--single {
+        background: #f8f8f8;
+    }
 
-.select2.select2-container.select2-container--open .select2-selection.select2-selection--multiple {
-  border: 1px solid #34495e;
-}
+    .select2.select2-container.select2-container--open .select2-selection.select2-selection--single .select2-selection__arrow {
+        -webkit-border-radius: 0 3px 0 0;
+        -moz-border-radius: 0 3px 0 0;
+        border-radius: 0 3px 0 0;
+    }
 
-.select2.select2-container .select2-selection--multiple {
-  height: auto;
-  min-height: 34px;
-}
+    .select2.select2-container.select2-container--open .select2-selection.select2-selection--multiple {
+        border: 1px solid #34495e;
+    }
 
-.select2.select2-container .select2-selection--multiple .select2-search--inline .select2-search__field {
-  margin-top: 0;
-  height: 32px;
-}
+    .select2.select2-container .select2-selection--multiple {
+        height: auto;
+        min-height: 34px;
+    }
 
-.select2.select2-container .select2-selection--multiple .select2-selection__rendered {
-  display: block;
-  padding: 0 4px;
-  line-height: 29px;
-}
+    .select2.select2-container .select2-selection--multiple .select2-search--inline .select2-search__field {
+        margin-top: 0;
+        height: 32px;
+    }
 
-.select2.select2-container .select2-selection--multiple .select2-selection__choice {
-  background-color: #f8f8f8;
-  border: 1px solid #ccc;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  margin: 4px 4px 0 0;
-  padding: 0 6px 0 22px;
-  height: 24px;
-  line-height: 24px;
-  font-size: 12px;
-  position: relative;
-}
+    .select2.select2-container .select2-selection--multiple .select2-selection__rendered {
+        display: block;
+        padding: 0 4px;
+        line-height: 29px;
+    }
 
-.select2.select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 22px;
-  width: 22px;
-  margin: 0;
-  text-align: center;
-  color: #e74c3c;
-  font-weight: bold;
-  font-size: 16px;
-}
+    .select2.select2-container .select2-selection--multiple .select2-selection__choice {
+        background-color: #f8f8f8;
+        border: 1px solid #ccc;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        margin: 4px 4px 0 0;
+        padding: 0 6px 0 22px;
+        height: 24px;
+        line-height: 24px;
+        font-size: 12px;
+        position: relative;
+    }
 
-.select2-container .select2-dropdown {
-  background: transparent;
-  border: none;
-  margin-top: -5px;
-}
+    .select2.select2-container .select2-selection--multiple .select2-selection__choice .select2-selection__choice__remove {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 22px;
+        width: 22px;
+        margin: 0;
+        text-align: center;
+        color: #e74c3c;
+        font-weight: bold;
+        font-size: 16px;
+    }
 
-.select2-container .select2-dropdown .select2-search {
-  padding: 0;
-}
+    .select2-container .select2-dropdown {
+        background: transparent;
+        border: none;
+        margin-top: -5px;
+    }
 
-.select2-container .select2-dropdown .select2-search input {
-  outline: none !important;
-  border: 1px solid #34495e !important;
-  border-bottom: none !important;
-  padding: 4px 6px !important;
-}
+    .select2-container .select2-dropdown .select2-search {
+        padding: 0;
+    }
 
-.select2-container .select2-dropdown .select2-results {
-  padding: 0;
-}
+    .select2-container .select2-dropdown .select2-search input {
+        outline: none !important;
+        border: 1px solid #34495e !important;
+        border-bottom: none !important;
+        padding: 4px 6px !important;
+    }
 
-.select2-container .select2-dropdown .select2-results ul {
-  background: #fff;
-  border: 1px solid #34495e;
-}
+    .select2-container .select2-dropdown .select2-results {
+        padding: 0;
+    }
 
-.select2-container .select2-dropdown .select2-results ul .select2-results__option--highlighted[aria-selected] {
-  background-color: #3498db;
-}
+    .select2-container .select2-dropdown .select2-results ul {
+        background: #fff;
+        border: 1px solid #34495e;
+    }
+
+    .select2-container .select2-dropdown .select2-results ul .select2-results__option--highlighted[aria-selected] {
+        background-color: #3498db;
+    }
 </style>
 @push('scripts')
- 
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function() {
             $("#nip").select2({
-                placeholder: "search here",
+                placeholder: "Cari NIP pegawai",
             });
         });
     </script>
 
-     <script type="text/javascript">
+    <script type="text/javascript">
         $(document).ready(function() {
             $("#jenis_vaksin_1").select2({
                 placeholder: "search here",
