@@ -104,7 +104,11 @@
                                                     <td>{{ $item->unitkerja_nama }}</td>
                                                     <td>{{ $item->no_telp }}</td>
                                                     <td>{{ $item->alamat }}</td>
-                                                    @if($item->vaksin1 == 'on')
+                                                    @if($item->vaksin3 != null)
+                                                        <td>Sudah Vaksin 3</td>
+                                                    @elseif($item->vaksin2 != null)
+                                                        <td>Sudah Vaksin 2</td>
+                                                    @elseif($item->vaksin1 != null)
                                                         <td>Sudah Vaksin 1</td>
                                                     @else
                                                         <td></td>

@@ -17,7 +17,7 @@ class CovidController extends Controller
     public function index()
     {
         // $penerima = DB::select('SELECT * FROM covids order by nip asc');
-        $penerima = DB::select('SELECT pegawais.nip, pegawais.nama, pegawais.jabatan, pegawais.unitkerja_nama, pegawais.no_telp, pegawais.alamat, covids.nip, covids.vaksin1 from pegawais, covids where pegawais.nip
+        $penerima = DB::select('SELECT pegawais.nip, pegawais.nama, pegawais.jabatan, pegawais.unitkerja_nama, pegawais.no_telp, pegawais.alamat, covids.nip, covids.vaksin1, covids.vaksin2, covids.vaksin3 from pegawais, covids where pegawais.nip
         = covids.nip');
 
         $data = DB::select("SELECT * FROM covids");
