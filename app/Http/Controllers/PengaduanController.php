@@ -16,8 +16,10 @@ class PengaduanController extends Controller
         $pengaduan = DB::select('SELECT pegawais.nama, pegawais.nip, pegawais.unitkerja_nama, pengaduans.token,  pengaduans.judul,  pengaduans.tanggal,  pengaduans.status from pegawais, pengaduans where pegawais.nama = pengaduans.nama');
 
         $data = DB::select("SELECT  pegawais.nip, pengaduans.id FROM  pegawais, pengaduans where pegawais.nama = pengaduans.nama");
+        
+        $total = DB::select("SELECT count(tanggal) as sum_total, count(tanggal) as sum_month FROM pengaduans");
 
-        return view('pengaduan.index', ['pengaduan'=>$pengaduan, 'data'=>$data]);
+        return view('pengaduan.index', ['pengaduan'=>$pengaduan, 'data'=>$data, 'total'=>$total]);
     }
 
     public function create()
@@ -41,14 +43,16 @@ class PengaduanController extends Controller
         Pengaduan::create($request->all());
 
         
-        $pengaduan = DB::select('SELECT pegawais.nama, pegawais.unitkerja_nama, pengaduans.token,  pengaduans.judul,  pengaduans.tanggal,  pengaduans.status from pegawais, pengaduans where pegawais.nama = pengaduans.nama');
+        $pengaduan = DB::select('SELECT pegawais.nama, pegawais.nip, pegawais.unitkerja_nama, pengaduans.token,  pengaduans.judul,  pengaduans.tanggal,  pengaduans.status from pegawais, pengaduans where pegawais.nama = pengaduans.nama');
 
         $data = DB::table('pegawais')->orderBy('nama', 'asc')->get();
+
+        $total = DB::select("SELECT count(tanggal) as sum_total, count(tanggal) as sum_month FROM pengaduans");
 
         $request->accepts('session');
         session()->flash('success', 'Berhasil menambahkan data!');
 
-        return view('pengaduan.index', compact('data','pengaduan'));
+        return view('pengaduan.index', compact('data','pengaduan','total'));
     }
 
     public function show($id)

@@ -16,11 +16,13 @@
                 <span class="info-box-icon"><i class="fa fa-info fa-nav"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Semua</span>
-                    <span class="info-box-number">3</span>
-                    <div class="progress">
-                        <div class="progress-bar"></div>
-                    </div>
-                    <span class="progress-description">Total bulan ini: <b>3</b></span>
+                    @foreach ($total as $sum)
+                        <span class="info-box-number"><?php echo $sum->sum_total; ?></span>
+                        <div class="progress">
+                            <div class="progress-bar"></div>
+                        </div>
+                        <span class="progress-description">Total bulan ini: <b><?php echo $sum->sum_month?></b></span>
+                    @endforeach 
                 </div>
             </div>
         </div>
@@ -119,7 +121,8 @@
                                                         <li>
                                                             <a href="#"
                                                                 class="btn btn-social btn-flat btn-block btn-xs"data-toggle="modal"
-                                                                data-target="#modal-danger{{ $item->nip }}"><i class="fa fa-trash"></i>Hapus
+                                                                data-target="#modal-danger{{ $item->nip }}"><i
+                                                                    class="fa fa-trash"></i>Hapus
                                                                 Data
                                                             </a>
                                                         </li>
@@ -144,7 +147,7 @@
         </div>
         {{-- danger modal --}}
         @foreach ($data as $item)
-            <div class="modal modal-danger fade" id="modal-danger{{ $item->nip}}">
+            <div class="modal modal-danger fade" id="modal-danger{{ $item->nip }}">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -168,3 +171,14 @@
         @endforeach
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable({
+                stateSave: true
+            });
+        });
+    </script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.12.1/datatables.min.js"></script>
+@endpush
