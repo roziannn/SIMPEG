@@ -2,4 +2,4 @@
     <div class="pull-right hidden-xs">
       <b>Version</b> 0.1
     </div>
-    <strong> &copy; Diskominfo Jabar
+    <strong> &copy; PT. Pertamina Persero 2022

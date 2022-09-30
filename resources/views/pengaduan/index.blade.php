@@ -21,8 +21,8 @@
                         <div class="progress">
                             <div class="progress-bar"></div>
                         </div>
-                        <span class="progress-description">Total bulan ini: <b><?php echo $sum->sum_month?></b></span>
-                    @endforeach 
+                        <span class="progress-description">Total bulan ini: <b><?php echo $sum->sum_month; ?></b></span>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -31,12 +31,13 @@
                 <span class="info-box-icon"><i class="fa fa-info fa-nav"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Menunggu Diproses</span>
-                    <span class="info-box-number">2</span>
-
-                    <div class="progress">
-                        <div class="progress-bar" style="width: 66.666666666667%"></div>
-                    </div>
-                    <span class="progress-description">Total bulan ini: <b>2</b></span>
+                    @foreach ($total2 as $sum)
+                        <span class="info-box-number"><?php echo $sum->sum_menunggu; ?></span>
+                        <div class="progress">
+                            <div class="progress-bar" style="width: 66.666666666667%"></div>
+                        </div>
+                        <span class="progress-description">Total bulan ini: <b><?php echo $sum->sum_menunggu; ?></b></span>
+                    @endforeach
                 </div>
             </div>
         </div>

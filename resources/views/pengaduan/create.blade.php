@@ -20,6 +20,15 @@
 
         </div>
 
+        @if (session()->has('success'))
+            <div class="box-body">
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    {{ session('success') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                </div>
+            </div>
+        @endif
+
         <form action="/pengaduan-store" method="POST" enctype="multipart/form-data" class="form-horizontal">
             @csrf
             <div class="box-body">
@@ -74,15 +83,15 @@
                     <label class="control-label-left col-sm-3">Tanggal Pengaduan</label>
                     <div class="col-sm-3">
                         <input name="tanggal" id="tanggal" class="form-control input-sm required" maxlength="50"
-                             type="text" value="<?php echo $tglLaporan;?>" readonly>
+                            type="text" value="<?php echo $tglLaporan; ?>" readonly>
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label-left col-sm-3">Status</label>
                     <div class="col-sm-3">
-                        <select class="form-control input-sm required" placeholder="pilih kategori"
-                            name="status" id="status">
+                        <select class="form-control input-sm required" placeholder="pilih kategori" name="status"
+                            id="status">
                             <option>Pilih Status</option>
                             <option value="Menunggu Diproses">Menunggu Diproses</option>
                             <option value="Sedang Diproses">Sedang Diproses</option>

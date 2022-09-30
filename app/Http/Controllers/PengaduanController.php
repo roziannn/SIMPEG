@@ -12,14 +12,15 @@ class PengaduanController extends Controller
 
     public function index()
     {
-
         $pengaduan = DB::select('SELECT pegawais.nama, pegawais.nip, pegawais.unitkerja_nama, pengaduans.token,  pengaduans.judul,  pengaduans.tanggal,  pengaduans.status from pegawais, pengaduans where pegawais.nama = pengaduans.nama');
 
         $data = DB::select("SELECT  pegawais.nip, pengaduans.id FROM  pegawais, pengaduans where pegawais.nama = pengaduans.nama");
-        
-        $total = DB::select("SELECT count(tanggal) as sum_total, count(tanggal) as sum_month FROM pengaduans");
+   
+        $total = DB::table('pengaduans')->select(DB::raw('count(tanggal) as sum_total'),DB::raw('count(tanggal) as sum_month'), DB::raw('count(status) as sum_menunggu'))->get();
 
-        return view('pengaduan.index', ['pengaduan'=>$pengaduan, 'data'=>$data, 'total'=>$total]);
+        $total2 = DB::select("SELECT count(status) as sum_menunggu from pengaduans where status LIKE '%Menunggu%'");
+
+        return view('pengaduan.index', ['pengaduan'=>$pengaduan, 'data'=>$data, 'total'=>$total, 'total2'=>$total2]);
     }
 
     public function create()
@@ -42,17 +43,10 @@ class PengaduanController extends Controller
     {
         Pengaduan::create($request->all());
 
-        
-        $pengaduan = DB::select('SELECT pegawais.nama, pegawais.nip, pegawais.unitkerja_nama, pengaduans.token,  pengaduans.judul,  pengaduans.tanggal,  pengaduans.status from pegawais, pengaduans where pegawais.nama = pengaduans.nama');
-
-        $data = DB::table('pegawais')->orderBy('nama', 'asc')->get();
-
-        $total = DB::select("SELECT count(tanggal) as sum_total, count(tanggal) as sum_month FROM pengaduans");
-
         $request->accepts('session');
         session()->flash('success', 'Berhasil menambahkan data!');
 
-        return view('pengaduan.index', compact('data','pengaduan','total'));
+        return back();
     }
 
     public function show($id)
