@@ -148,6 +148,8 @@
         </form>
     </div>
 @endsection
+
+{{-- field select2 style --}}
 <style>
     .select2.select2-container {
         width: 100% !important;

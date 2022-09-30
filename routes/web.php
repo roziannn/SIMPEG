@@ -5,6 +5,7 @@ use App\Http\Controllers\CutiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\CovidController;
+use App\Http\Controllers\PengaduanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +79,8 @@ Route::get('/data-vaksin/rekap_vaksin', [CovidController::class, 'rekap']);
 //pdf downlaod
 Route::get('/data-pegawai/cetak_pdf', [PegawaiController::class, 'cetak_pdf']);
 
+//pengaduan
+Route::resource('/pengaduan', PengaduanController::class);
 
 
 

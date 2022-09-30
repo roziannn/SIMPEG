@@ -10,6 +10,7 @@ class Covid extends Model
     use HasFactory;
 
     protected $fillable = [
+        //linked with pegawai table with 'nip'
         'nip',
         'vaksin1',
         'vaksin2',

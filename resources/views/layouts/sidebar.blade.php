@@ -65,7 +65,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/tambah_data_cuti"><i class="fa fa-file-text"></i>Pengajuan Cuti</a></li>
-            <li><a href="rekapTAM"><i class="fa fa-info "></i>Pengaduan</a></li>
+            <li><a href="/pengaduan"><i class="fa fa-info "></i>Pengaduan</a></li>
           </ul>
         </li>
         {{-- @if(Auth::user()->roles == "ADMIN") --}}
