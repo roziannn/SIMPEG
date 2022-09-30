@@ -22,7 +22,7 @@ class CovidController extends Controller
 
         $data = DB::select("SELECT * FROM covids");
 
-        return view('covid19.vaksin.daftar_penerima.index', (compact('penerima', 'data')));
+        return view('covid19.vaksin.daftar_penerima.index', (compact('data', 'penerima')));
     }
     public function rekap()
     {

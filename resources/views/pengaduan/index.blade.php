@@ -70,7 +70,7 @@
     <div id="maincontent"></div>
     <div class="box box-info">
         <div class="box-header with-border">
-            <a href="/pengaduan/create" title="Hapus Data"
+            <a href="/pengaduan-create" title="Hapus Data"
                 class="btn btn-social btn-flat btn-success btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block">
                 <i class="fa fa-plus"></i>Tambah Pengaduan
             </a>
@@ -86,6 +86,7 @@
                                         <th width="3%" style="text-align: center">No</th>
                                         <th width="5%" style="text-align: center">Action</th>
                                         <th width="10%" style="text-align: center">Token</th>
+                                        <th width="10%" style="text-align: center">NIP</th>
                                         <th style="text-align: center">Nama</th>
                                         <th style="text-align: center">Unit Kerja</th>
                                         <th style="text-align: center">Judul</th>
@@ -95,13 +96,12 @@
                                 </thead>
                                 <tbody>
                                     @php $i=1 @endphp
-                                    {{-- @foreach ($data as $item) --}}
+                                    @foreach ($pengaduan as $item)
                                         <tr>
                                             <td>{{ $i++ }}</td>
                                             <td>
                                                 <div class="btn-group">
-                                                    <button type="button"
-                                                        class="btn btn-social btn-flat btn-info btn-xs"
+                                                    <button type="button" class="btn btn-social btn-flat btn-info btn-xs"
                                                         data-toggle="dropdown" aria-expanded="false"><i
                                                             class="fa fa-arrow-circle-down"></i> Pilih Aksi
                                                     </button>
@@ -119,22 +119,22 @@
                                                         <li>
                                                             <a href="#"
                                                                 class="btn btn-social btn-flat btn-block btn-xs"data-toggle="modal"
-                                                                data-target="#modal-danger"><i
-                                                                    class="fa fa-trash"></i>Hapus Data
+                                                                data-target="#modal-danger{{ $item->nip }}"><i class="fa fa-trash"></i>Hapus
+                                                                Data
                                                             </a>
                                                         </li>
                                                     </ul>
                                                 </div>
                                             </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                        
+                                            <td>{{ $item->token }}</td>
+                                            <td>{{ $item->nip }}</td>
+                                            <td>{{ $item->nama }}</td>
+                                            <td>{{ $item->unitkerja_nama }}</td>
+                                            <td>{{ $item->judul }}</td>
+                                            <td>{{ $item->tanggal }}</td>
+                                            <td>{{ $item->status }}</td>
                                         </tr>
-                                    {{-- @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -142,5 +142,29 @@
                 </div>
             </div>
         </div>
+        {{-- danger modal --}}
+        @foreach ($data as $item)
+            <div class="modal modal-danger fade" id="modal-danger{{ $item->nip}}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Konfirmasi</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ url('pengaduan-delete/' . $item->id) }}" method="GET">
+                                {{ csrf_field() }}
+                                <p>Yakin ingin menghapus data?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-outline">Hapus</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
 @endsection

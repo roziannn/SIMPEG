@@ -80,7 +80,10 @@ Route::get('/data-vaksin/rekap_vaksin', [CovidController::class, 'rekap']);
 Route::get('/data-pegawai/cetak_pdf', [PegawaiController::class, 'cetak_pdf']);
 
 //pengaduan
-Route::resource('/pengaduan', PengaduanController::class);
+Route::get('/pengaduan', [PengaduanController::class, 'index']);
+Route::get('/pengaduan-create', [PengaduanController::class, 'create']);
+Route::post('/pengaduan-store', [PengaduanController::class, 'store']);
+Route::get('/pengaduan-delete/{id}', [PengaduanController::class, 'destroy']);
 
 
 

@@ -148,10 +148,11 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('#myTable').DataTable();
+            $('#myTable').DataTable({
+                stateSave: true
+            });
         });
     </script>
-
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.12.1/datatables.min.js"></script>
 
     {{-- <script>

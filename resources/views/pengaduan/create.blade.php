@@ -10,55 +10,96 @@
 @endpush
 
 @section('content')
-<div class="box box-info">
-    <div class="box-header with-border">
-        <div class="btn-group btn-group-vertical">
-            <a href="/pengaduan" class="btn btn-social btn-flat btn-info btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block" title="Kembali Ke Data Vaksin"><i class="fa fa-arrow-circle-o-left"></i> Kembali Ke Data Pengaduan</a>
+    <div class="box box-info">
+        <div class="box-header with-border">
+            <div class="btn-group btn-group-vertical">
+                <a href="/pengaduan"
+                    class="btn btn-social btn-flat btn-info btn-xs visible-xs-block visible-sm-inline-block visible-md-inline-block visible-lg-inline-block"
+                    title="Kembali Ke Data Vaksin"><i class="fa fa-arrow-circle-o-left"></i> Kembali Ke Data Pengaduan</a>
+            </div>
+
         </div>
-        
+
+        <form action="/pengaduan-store" method="POST" enctype="multipart/form-data" class="form-horizontal">
+            @csrf
+            <div class="box-body">
+                <div class="form-group">
+                    <label class="control-label-left col-sm-3" for="token">Token</label>
+                    <div class="col-sm-3">
+                        <input name="token" id="token" class="form-control input-sm required" maxlength="50"
+                            placeholder="Token" type="text" autocomplete="off" value="<?php echo $token; ?>" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label-left col-sm-3" for="nama">Nama</label>
+                    <div class="col-sm-3">
+                        <select class="form-control input-group-sm select2" id='nama' name="nama" required>
+                            <option></option>
+                            @foreach ($data as $d)
+                                <option>{{ $d->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label-left col-sm-3">Kategori Pengaduan</label>
+                    <div class="col-sm-3">
+                        <select class="form-control input-sm required" placeholder="pilih kategori"
+                            name="kategori_pengaduan" id="kategori_pengaduan">
+                            <option value="AST">ASET</option>
+                            <option value="IND">INDIVIDU</option>
+                            <option value="OTR">LAINNYA</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label-left col-sm-3">Judul</label>
+                    <div class="col-sm-3">
+                        <input name="judul" id="judul" class="form-control input-sm required" maxlength="50"
+                            placeholder="Judul Pengaduan" type="text" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label-left col-sm-3">Keterangan</label>
+                    <div class="col-sm-3">
+                        <textarea name="keterangan" id="keterangan" class="form-control input-sm required" maxlength="50"
+                            placeholder="Keterangan" rows="3" autocomplete="off"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label-left col-sm-3">Tanggal Pengaduan</label>
+                    <div class="col-sm-3">
+                        <input name="tanggal" id="tanggal" class="form-control input-sm required" maxlength="50"
+                             type="text" value="<?php echo $tglLaporan;?>" readonly>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label-left col-sm-3">Status</label>
+                    <div class="col-sm-3">
+                        <select class="form-control input-sm required" placeholder="pilih kategori"
+                            name="status" id="status">
+                            <option>Pilih Status</option>
+                            <option value="Menunggu Diproses">Menunggu Diproses</option>
+                            <option value="Sedang Diproses">Sedang Diproses</option>
+                            <option value="Selesai Diproses">Selesai Diproses</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box-footer">
+                <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm"><i class="fa fa-times"></i>
+                    Batal</button>
+                <button type="submit" class="btn btn-social btn-flat btn-info btn-sm pull-right confirm"><i
+                        class="fa fa-check"></i> Simpan</button>
+            </div>
+        </form>
     </div>
-
-    <form action="/store-data-penerima-vaksin" method="POST" enctype="multipart/form-data" class="form-horizontal">
-        @csrf
-        <div class="box-body">
-            <div class="form-group">
-                <label class="control-label-left col-sm-3" for="token">Token</label>
-                <div class="col-sm-3">
-                    <input name="token" id="token" class="form-control input-sm required" maxlength="50" placeholder="Token" type="text" autocomplete="off">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label-left col-sm-3" for="nama">Nama</label>
-                <div class="col-sm-3">
-                    <select class="form-control input-group-sm select2" id='nama' name="nama" required>
-                        <option></option>
-                        @foreach ($data as $d)
-                            <option>{{ $d->nama }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label-left col-sm-3">Vaksin Dosis 1</label>
-                <div class="col-sm-3">
-                    <select class="form-control input-sm required" placeholder="pilih kategori" name="kategori_pengaduan" id="kategori_pengaduan">
-                        <option value="AST">ASET</option>
-                        <option value="IND">INDIVIDU</option>
-                        <option value="OTR">OTHER</option>
-                    </select>
-                </div>
-            </div>
-
-        </div>
-        <div class="box-footer">
-            <button type="reset" class="btn btn-social btn-flat btn-danger btn-sm"><i class="fa fa-times"></i>
-                Batal</button>
-            <button type="submit" class="btn btn-social btn-flat btn-info btn-sm pull-right confirm"><i
-                    class="fa fa-check"></i> Simpan</button>
-        </div>
-    </form>
-</div>
 @endsection
 
 {{-- field select2 style --}}

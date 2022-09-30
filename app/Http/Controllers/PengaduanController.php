@@ -2,91 +2,78 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengaduan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PengaduanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        return view('pengaduan.index');
+
+        $pengaduan = DB::select('SELECT pegawais.nama, pegawais.nip, pegawais.unitkerja_nama, pengaduans.token,  pengaduans.judul,  pengaduans.tanggal,  pengaduans.status from pegawais, pengaduans where pegawais.nama = pengaduans.nama');
+
+        $data = DB::select("SELECT  pegawais.nip, pengaduans.id FROM  pegawais, pengaduans where pegawais.nama = pengaduans.nama");
+
+        return view('pengaduan.index', ['pengaduan'=>$pengaduan, 'data'=>$data]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
 
         $now = Carbon::now();
         $tglLaporan = Carbon::now()->format('d/m/Y');
 
-        
+        $urut = DB::table('pengaduans')->orderBy('id', 'desc')->first()->id;
+
+        $thnBulan = $now->year . $now->month;
+        $token = $thnBulan . sprintf('%03d', $urut + 1);
+
         $data = DB::table('pegawais')->orderBy('nama', 'asc')->get();
-        return view('pengaduan.create',   compact('data'));
+
+        return view('pengaduan.create',   compact('data', 'urut', 'thnBulan', 'tglLaporan', 'token'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        Pengaduan::create($request->all());
+
+        
+        $pengaduan = DB::select('SELECT pegawais.nama, pegawais.unitkerja_nama, pengaduans.token,  pengaduans.judul,  pengaduans.tanggal,  pengaduans.status from pegawais, pengaduans where pegawais.nama = pengaduans.nama');
+
+        $data = DB::table('pegawais')->orderBy('nama', 'asc')->get();
+
+        $request->accepts('session');
+        session()->flash('success', 'Berhasil menambahkan data!');
+
+        return view('pengaduan.index', compact('data','pengaduan'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
-        //
+        $data = Pengaduan::find($id);
+        $data->delete();
+
+        return redirect('/pengaduan')->with('successDelete', 'Data has been deleted!');
     }
 }

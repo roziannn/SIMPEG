@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    <strong style="font-size: 20px">SISTEM INFORMASI MANAJEMEN PEGAWAI DISKOMINFO JABAR</strong>
+    <strong style="font-size: 20px">SISTEM INFORMASI MANAJEMEN PEGAWAI PT. PERTAMINA PERSERO</strong>
 @endsection
 
 @push('css')
