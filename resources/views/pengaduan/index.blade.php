@@ -22,11 +22,11 @@
                     <div class="progress">
                         <div class="progress-bar"></div>
                     </div>
-                   
+
                     @foreach ($this_month as $month)
                         <span class="progress-description">Total bulan ini: <b><?php echo $month->sum_month; ?></b></span>
                     @endforeach
-                      
+
                 </div>
             </div>
         </div>
@@ -37,10 +37,12 @@
                     <span class="info-box-text">Menunggu Diproses</span>
                     @foreach ($total1 as $sum)
                         <span class="info-box-number"><?php echo $sum->sum_menunggu; ?></span>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 66.666666666667%"></div>
-                        </div>
-                        <span class="progress-description">Total bulan ini: <b><?php echo $sum->sum_menunggu; ?></b></span>
+                    @endforeach
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 66.666666666667%"></div>
+                    </div>
+                    @foreach ($this_month1 as $sum)
+                        <span class="progress-description">Total bulan ini: <b><?php echo $sum->this_month1; ?></b></span>
                     @endforeach
                 </div>
             </div>
@@ -52,10 +54,12 @@
                     @foreach ($total2 as $sum)
                         <span class="info-box-text">Sedang Diproses</span>
                         <span class="info-box-number"><?php echo $sum->sum_sedang_proses; ?></span>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 0%"></div>
-                        </div>
-                        <span class="progress-description">Total bulan ini: <b>0</b></span>
+                    @endforeach
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                    @foreach ($this_month2 as $sum)
+                        <span class="progress-description">Total bulan ini: <b><?php echo $sum->this_month2; ?></b></span>
                     @endforeach
                 </div>
             </div>
@@ -67,10 +71,12 @@
                     @foreach ($total3 as $sum)
                         <span class="info-box-text">Selesai Diproses</span>
                         <span class="info-box-number"><?php echo $sum->sum_selesai; ?></span>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 33.333333333333%"></div>
-                        </div>
-                        <span class="progress-description">Total bulan ini: <b>1</b></span>
+                    @endforeach
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 33.333333333333%"></div>
+                    </div>
+                    @foreach ($this_month3 as $sum)
+                    <span class="progress-description">Total bulan ini: <b><?php echo $sum->this_month3?></b></span>
                     @endforeach
                 </div>
             </div>
