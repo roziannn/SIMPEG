@@ -18,9 +18,11 @@ class PengaduanController extends Controller
    
         $total = DB::table('pengaduans')->select(DB::raw('count(tanggal) as sum_total'),DB::raw('count(tanggal) as sum_month'), DB::raw('count(status) as sum_menunggu'))->get();
 
-        $total2 = DB::select("SELECT count(status) as sum_menunggu from pengaduans where status LIKE '%Menunggu%'");
+        $total1 = DB::select("SELECT count(status) as sum_menunggu from pengaduans where status LIKE '%Menunggu%'");
+        $total2 = DB::select("SELECT count(status) as sum_sedang_proses from pengaduans where status LIKE '%Sedang%'");
+        $total3 = DB::select("SELECT count(status) as sum_selesai from pengaduans where status LIKE '%Selesai%'");
 
-        return view('pengaduan.index', ['pengaduan'=>$pengaduan, 'data'=>$data, 'total'=>$total, 'total2'=>$total2]);
+        return view('pengaduan.index', compact('pengaduan', 'data', 'total', 'total1','total2','total3'));
     }
 
     public function create()

@@ -92,7 +92,6 @@
                     <div class="col-sm-3">
                         <select class="form-control input-sm required" placeholder="pilih kategori" name="status"
                             id="status">
-                            <option>Pilih Status</option>
                             <option value="Menunggu Diproses">Menunggu Diproses</option>
                             <option value="Sedang Diproses">Sedang Diproses</option>
                             <option value="Selesai Diproses">Selesai Diproses</option>

@@ -4,7 +4,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><strong>SIM</strong></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Pertamina</b>Persero</span>
+      <span class="logo-lg"><b>Pertamina</b>Patra</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -46,7 +46,7 @@
                       @csrf
                       
                         <button class="btn btn-primary btn-flat btn-xs" type="submit"><i class="fa fa-sign-out" ></i> <span>Logout</span></button>
-                        
+
                     </form>
                   </div>
                 </li>

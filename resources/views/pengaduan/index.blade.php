@@ -31,7 +31,7 @@
                 <span class="info-box-icon"><i class="fa fa-info fa-nav"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Menunggu Diproses</span>
-                    @foreach ($total2 as $sum)
+                    @foreach ($total1 as $sum)
                         <span class="info-box-number"><?php echo $sum->sum_menunggu; ?></span>
                         <div class="progress">
                             <div class="progress-bar" style="width: 66.666666666667%"></div>
@@ -45,13 +45,14 @@
             <div class="info-box bg-blue">
                 <span class="info-box-icon"><i class="fa fa-info fa-nav"></i></span>
                 <div class="info-box-content">
+                    @foreach ($total2 as $sum)
                     <span class="info-box-text">Sedang Diproses</span>
-                    <span class="info-box-number">0</span>
-
+                    <span class="info-box-number"><?php echo $sum->sum_sedang_proses; ?></span>
                     <div class="progress">
                         <div class="progress-bar" style="width: 0%"></div>
                     </div>
                     <span class="progress-description">Total bulan ini: <b>0</b></span>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -59,13 +60,14 @@
             <div class="info-box bg-green">
                 <span class="info-box-icon"><i class="fa fa-info fa-nav"></i></span>
                 <div class="info-box-content">
+                    @foreach ($total3 as $sum)
                     <span class="info-box-text">Selesai Diproses</span>
-                    <span class="info-box-number">1</span>
-
+                    <span class="info-box-number"><?php echo $sum->sum_selesai; ?></span>
                     <div class="progress">
                         <div class="progress-bar" style="width: 33.333333333333%"></div>
                     </div>
                     <span class="progress-description">Total bulan ini: <b>1</b></span>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -136,7 +138,9 @@
                                             <td>{{ $item->unitkerja_nama }}</td>
                                             <td>{{ $item->judul }}</td>
                                             <td>{{ $item->tanggal }}</td>
-                                            <td>{{ $item->status }}</td>
+                                            <td>
+                                                <span class="label label-danger">{{ $item->status }}</span>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
