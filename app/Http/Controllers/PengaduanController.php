@@ -17,12 +17,15 @@ class PengaduanController extends Controller
         $data = DB::select("SELECT  pegawais.nip, pengaduans.id FROM  pegawais, pengaduans where pegawais.nama = pengaduans.nama");
    
         $total = DB::table('pengaduans')->select(DB::raw('count(tanggal) as sum_total'),DB::raw('count(tanggal) as sum_month'), DB::raw('count(status) as sum_menunggu'))->get();
+        
+        $this_month = DB::table('pengaduans')->select(DB::raw('count(tanggal) as sum_month'))->whereMonth('created_at', '=', Carbon::now()->format('m'))->get();
+        // dd($this_month);
 
         $total1 = DB::select("SELECT count(status) as sum_menunggu from pengaduans where status LIKE '%Menunggu%'");
         $total2 = DB::select("SELECT count(status) as sum_sedang_proses from pengaduans where status LIKE '%Sedang%'");
         $total3 = DB::select("SELECT count(status) as sum_selesai from pengaduans where status LIKE '%Selesai%'");
 
-        return view('pengaduan.index', compact('pengaduan', 'data', 'total', 'total1','total2','total3'));
+        return view('pengaduan.index', compact('pengaduan', 'data', 'total', 'total1','total2','total3', 'this_month'));
     }
 
     public function create()
