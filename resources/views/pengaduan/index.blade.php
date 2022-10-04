@@ -22,7 +22,6 @@
                     <div class="progress">
                         <div class="progress-bar"></div>
                     </div>
-
                     @foreach ($this_month as $month)
                         <span class="progress-description">Total bulan ini: <b><?php echo $month->sum_month; ?></b></span>
                     @endforeach
@@ -76,7 +75,7 @@
                         <div class="progress-bar" style="width: 33.333333333333%"></div>
                     </div>
                     @foreach ($this_month3 as $sum)
-                    <span class="progress-description">Total bulan ini: <b><?php echo $sum->this_month3?></b></span>
+                        <span class="progress-description">Total bulan ini: <b><?php echo $sum->this_month3; ?></b></span>
                     @endforeach
                 </div>
             </div>
@@ -149,7 +148,13 @@
                                             <td>{{ $item->judul }}</td>
                                             <td>{{ $item->tanggal }}</td>
                                             <td>
-                                                <span class="label label-danger">{{ $item->status }}</span>
+                                                @if ($item->status == 'Menunggu Diproses')
+                                                    <span class="label label-danger">Menunggu</span>
+                                                @elseif($item->status == 'Sedang Diproses')
+                                                    <span class="label label bg-blue">Diproses</span>
+                                                @elseif($item->status == 'Selesai Diproses')
+                                                    <span class="label label-success">Selesai</span>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
