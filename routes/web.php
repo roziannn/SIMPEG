@@ -84,6 +84,10 @@ Route::get('/pengaduan', [PengaduanController::class, 'index'])->middleware('aut
 Route::get('/pengaduan-create', [PengaduanController::class, 'create']);
 Route::post('/pengaduan-store', [PengaduanController::class, 'store']);
 Route::get('/pengaduan-delete/{id}', [PengaduanController::class, 'destroy']);
+Route::get('/pengaduan-detail/{id}', [PengaduanController::class, 'show']);
+
+Route::match(['get', 'post'], '/edit-pengaduan{id}', [PengaduanController::class,'edit']);
+Route::post('/edit-pengaduan/{id}', [PengaduanController::class,'update']);
 
 
 

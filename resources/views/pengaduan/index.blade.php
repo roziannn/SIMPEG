@@ -122,12 +122,16 @@
                                                     <ul class="dropdown-menu" role="menu">
                                                         <li>
                                                             <a href="#"
-                                                                class="btn btn-social btn-flat btn-block btn-xs"><i
+                                                                class="btn btn-social btn-flat btn-block btn-xs"
+                                                                data-toggle="modal"
+                                                                data-target="#modal-show{{ $item->nip }}"><i
                                                                     class="fa fa-list-ol"></i>Lihat Detail</a>
                                                         </li>
                                                         <li>
                                                             <a href="#"
-                                                                class="btn btn-social btn-flat btn-block btn-xs"><i
+                                                                class="btn btn-social btn-flat btn-block btn-xs"
+                                                                data-toggle="modal"
+                                                                data-target="#modal-info{{ $item->nip }}"><i
                                                                     class="fa fa-edit"></i>Ubah Data</a>
                                                         </li>
                                                         <li>
@@ -156,6 +160,11 @@
                                                     <span class="label label-success">Selesai</span>
                                                 @endif
                                             </td>
+                                            <style>
+                                                tbody tr td {
+                                                    text-align: center;
+                                                }
+                                            </style>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -190,6 +199,104 @@
             </div>
         @endforeach
     </div>
+
+    {{-- MODAL POP UP SHOW --}}
+    @foreach ($data as $item)
+        <div class="modal modal-default fade" id="modal-show{{ $item->nip }}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Tampilkan Detail</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="{{ url('edit-pengaduan/' . $item->id) }}" method="POST">
+                            {{ csrf_field() }}
+
+                            <div class="form-group">
+                                <label for="nama">Nama Pelapor</label>
+                                <input type="nama" name="nama" class="form-control" id="nama"
+                                    placeholder="Nama Lengkap" value="{{ $item->nama }}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="nama">Unit Kerja</label>
+                                <input type="nama" name="nama" class="form-control" id="nama"
+                                    placeholder="Nama Lengkap" value="{{ $item->unitkerja_nama }}" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label for="nama">Keterangan</label>
+                                <textarea type="nama" rows="4" class="form-control" id="keterangan" value="" disabled>{{ $item->keterangan }}</textarea>
+                            </div>
+                            {{-- END MODAL-BODY --}}
+
+                            {{-- komentar --}}
+                            <hr style="border-top: 1px solid #eee; margin:20px; border:0;">
+                            <div class="row support-content-comment">
+								<div class="col-md-12">
+									<p>Diupdate oleh <a href="#">Admin</a> | 2022-10-10 05:49:09</p>
+									{{-- <p>sip</p> --}}
+								</div>
+							</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-danger btn-sm">Close</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+    {{-- MODAL POP UP EDIT --}}
+    @foreach ($data as $item)
+        <div class="modal modal-default fade" id="modal-info{{ $item->nip }}">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Tanggapi Pengaduan</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <form action="{{ url('edit-pengaduan/' . $item->id) }}" method="POST">
+                            {{ csrf_field() }}
+
+                            <div class="form-group">
+                                <label for="nama">Nama Pelapor</label>
+                                <input type="nama" name="nama" class="form-control" id="nama"
+                                    placeholder="Nama Lengkap" value="{{ $item->nama }}" readonly>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="nama">Status Pengaduan</label>
+                                <select class="form-control input-sm required" placeholder="pilih kategori"
+                                    name="status" id="status">
+                                    <option
+                                        value="Menunggu Diproses"{{ $item->status == 'Menunggu Diproses' ? 'selected' : '' }}>
+                                        Menunggu Diproses</option>
+                                    <option
+                                        value="Sedang Diproses"{{ $item->status == 'Sedang Diproses' ? 'selected' : '' }}>
+                                        Sedang Diproses</option>
+                                    <option
+                                        value="Selesai Diproses"{{ $item->status == 'Selesai Diproses' ? 'selected' : '' }}>
+                                        Selesai Diproses</option>
+                                </select>
+                            </div>
+
+                            {{-- END MODAL-BODY --}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-danger btn-sm">Close</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Save changes</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection
 
 @push('scripts')

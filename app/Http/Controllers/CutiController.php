@@ -66,7 +66,7 @@ class CutiController extends Controller
             'status'=> $request->status,
         ]);
 
-        return redirect()->back()->with('update_success', 'Update data berhasil!');;
+        return redirect()->back()->with('update_success', 'Update data berhasil!');
     }
 
 
