@@ -235,7 +235,7 @@
                             <hr style="border-top: 1px solid #eee; margin:20px; border:0;">
                             <div class="row support-content-comment">
 								<div class="col-md-12">
-									<p>Diupdate oleh <a href="#">Admin</a> | 2022-10-10 05:49:09</p>
+									<p>Diupdate oleh <a href="#">Admin</a> | {{ $item->updated_at }}</p>
 									{{-- <p>sip</p> --}}
 								</div>
 							</div>

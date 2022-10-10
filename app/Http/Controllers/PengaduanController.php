@@ -14,7 +14,7 @@ class PengaduanController extends Controller
     {
         $pengaduan = DB::select('SELECT pegawais.nama, pegawais.nip, pegawais.unitkerja_nama, pengaduans.token,  pengaduans.judul,  pengaduans.tanggal,  pengaduans.status from pegawais, pengaduans where pegawais.nama = pengaduans.nama');
 
-        $data = DB::select("SELECT  pegawais.nip, pegawais.nama, pegawais.unitkerja_nama, pengaduans.id, pengaduans.keterangan, pengaduans.status FROM  pegawais, pengaduans where pegawais.nama = pengaduans.nama");
+        $data = DB::select("SELECT  pegawais.nip, pegawais.nama, pegawais.unitkerja_nama, pengaduans.id, pengaduans.keterangan, pengaduans.status, pengaduans.updated_at FROM  pegawais, pengaduans where pegawais.nama = pengaduans.nama");
    
         $total = DB::table('pengaduans')->select(DB::raw('count(tanggal) as sum_total'),DB::raw('count(tanggal) as sum_month'), DB::raw('count(status) as sum_menunggu'))->get();
 
@@ -28,7 +28,6 @@ class PengaduanController extends Controller
         $this_month1 = DB::table('pengaduans')->select(DB::raw('count(status) as this_month1'))->where('status', 'like', '%Menunggu%')->whereMonth('created_at', '=', Carbon::now()->format('m'))->get();
         $this_month2 = DB::table('pengaduans')->select(DB::raw('count(status) as this_month2'))->where('status', 'like', '%Sedang%')->whereMonth('created_at', '=', Carbon::now()->format('m'))->get();
         $this_month3 = DB::table('pengaduans')->select(DB::raw('count(status) as this_month3'))->where('status', 'like', '%Selesai%')->whereMonth('created_at', '=', Carbon::now()->format('m'))->get();
-        
         
 
         return view('pengaduan.index', compact('pengaduan', 'data', 'total', 'total1','total2','total3', 'this_month', 'this_month1', 'this_month2', 'this_month3'));
