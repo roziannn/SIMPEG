@@ -50,16 +50,14 @@
                                     <table id="table-data" class="table table-bordered dataTable table-striped  table-hover" style="width:100%">
                                         <thead class="bg-gray color-palette">
                                             <tr>
-                                                <th style="text-align:center" rowspan="2">No</th>
-                                                <th style="text-align:center" rowspan="2">Unit Kerja</th>
-                                                <th style="text-align:center" colspan="4">Penerima Dosis Vaksin <br>(Perorang)</th>
-                                                <th style="text-align:center" rowspan="2">Total</th>
+                                                <th style="text-align:center" rowspan="3">No</th>
+                                                <th style="text-align:center" rowspan="3">Unit Kerja</th>
+                                                <th style="text-align:center" colspan="2">Sasaran Vaksin <br> (Perorang)</th>
+                                                
                                             </tr>
                                             <tr>
-                                                <td  style="text-align:center">I</td>
-                                                <td  style="text-align:center">II</td>
-                                                <td  style="text-align:center">III</td>
-                                                <td  style="text-align:center">Ket</td>
+                                                <td  style="text-align:center" colspan="1">Sudah Vaksin</td>
+                                                <td  style="text-align:center">Belum Vaksin</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -68,13 +66,21 @@
                                             <tr>
                                                 <td>{{ $i++ }}</td>
                                                 <td>{{ $item->unitkerja_nama }}</td>
+                                                <td>{{ $item->sudah_vaksin }}</td>
                                                 <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td>{{ $item->total }}</td>
                                             </tr>
                                             @endforeach
+                                            <tr>
+                                                <th style="text-align:center" colspan="2">Total</th>
+
+                                                @foreach ( $total_1 as $item )
+                                                <th style="text-align:center" >{{ $item->total_sudah_vaksin }}</th>
+                                                @endforeach
+
+                                                @foreach ( $total_2 as $item )
+                                                <th style="text-align:center" >{{ $item->total_belum_vaksin }}</th>
+                                                @endforeach
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -86,3 +92,9 @@
         </div>
     </div>
 @endsection
+
+<style>
+    table {
+        border-spacing: 0;
+    }
+</style>

@@ -26,12 +26,19 @@ class CovidController extends Controller
     }
     public function rekap()
     {
-
         //count total per- satu unit
-        $data = DB::select('SELECT pegawais.unitkerja_nama, count(pegawais.unitkerja_nama) as total from pegawais, covids  where pegawais.nip
+        $data = DB::select('SELECT pegawais.unitkerja_nama, count(pegawais.unitkerja_nama) as sudah_vaksin from pegawais, covids  where pegawais.nip
         = covids.nip group by unitkerja_nama');
 
-        return view('covid19.vaksin.rekap_penerima.rekap', compact('data'));
+        $belum_vaksin = DB::select("SELECT  count(unitkerja_nama) as belum_vaksin from pegawais where nip not in (select nip from covids) group by unitkerja_nama");
+        // dd($belum_vaksin);
+        
+        
+        $total_1 = DB::select("SELECT count(nip) as total_sudah_vaksin from covids");
+        
+        $total_2 = DB::select("SELECT count(nip) as total_belum_vaksin from pegawais where nip not in (select nip from covids)");
+        
+        return view('covid19.vaksin.rekap_penerima.rekap', compact('data', 'belum_vaksin', 'total_1', 'total_2'));
     }
 
     //while click button add
