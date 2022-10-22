@@ -46,11 +46,6 @@ Route::get('/data-pegawai/tambah_data_pegawai', [PegawaiController::class, 'add_
 Route::post('/store-data-pegawai', [PegawaiController::class, 'store_add_data']);
 Route::get('/delete{nip}', [PegawaiController::class, 'delete']);
 
-//user
-Route::get('/delete{id}', [UserController::class, 'delete']);
-Route::match(['get', 'post'], '/edit{id}', [UserController::class,'edit']);
-
-
 //cuti
 Route::get('/data-cuti', [CutiController::class, 'show']);
 Route::get('/tambah_data_cuti', [CutiController::class, 'add']);
@@ -93,5 +88,5 @@ Route::post('/edit-pengaduan/{id}', [PengaduanController::class,'update']);
 //pengguna
 Route::get('/pengguna',[UserController::class, 'index']);
 Route::get('/delete-pengguna/{id}', [UserController::class, 'delete']);
-Route::post('/add-new-user', [UserController::class, 'store']);
+Route::match(['get', 'post'], '/edit{id}', [UserController::class,'edit']);
 

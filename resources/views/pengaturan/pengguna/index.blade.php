@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    Data Pengguna
+    Data Pengguna <small>Active</small>
 @endsection
 
 @push('css')
@@ -35,8 +35,7 @@
             <div class="box box-info">
                 <div class="box-header with-border">
                     <div class="btn-group btn-group-vertical">
-                        <a href="/data-pegawai/tambah_data_pegawai" class="btn btn-social btn-flat btn-success btn-xs"
-                            title="Tambah Data">
+                        <a href="#" class="btn btn-social btn-flat btn-success btn-xs" title="Tambah Data">
                             <i class="fa fa-plus"></i> Tambah Pengguna
                         </a>
                     </div>
@@ -56,6 +55,13 @@
                                             <th style="text-align: center">Hak Akses</th>
                                         </tr>
                                     </thead>
+                                    @if (session('update_success'))
+                                        <div class="alert alert-success alert-dismissable" role="alert">
+                                            {{ session('update_success') }}
+                                            <button type="button" class="close" data-dismiss="alert"
+                                                aria-hidden="true">&times;</button>
+                                        </div>
+                                    @endif
                                     <tbody>
                                         @php $i=1 @endphp
                                         @foreach ($data as $item)
@@ -101,6 +107,52 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-outline">Hapus</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endforeach
+
+        {{-- MODAL POP UP --}}
+        @foreach ($data as $data)
+            <div class="modal modal-default fade" id="modal-info{{ $data->id }}">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Edit User Account</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <form action="{{ url('edit' . $data->id) }}" method="POST">
+                                {{ csrf_field() }}
+
+                                <div class="form-group">
+                                    <label for="nama">Nama Lengkap</label>
+                                    <input type="nama" name="nama" class="form-control" id="nama"
+                                        placeholder="Nama Lengkap" value="{{ $data->nama }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="nip">NIP</label>
+                                    <input type="nip" name="nip" class="form-control" id="nip"
+                                        placeholder="NIP" value="{{ $data->nip }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="roles">Hak Akses</label>
+                                    <select class="form-control" name="roles" arial-label="Select example">
+                                        <option value="USER"{{ $data->roles == 'USER' ? 'selected' : '' }}>USER</option>
+                                        <option value="ADMIN"{{ $data->roles == 'ADMIN' ? 'selected' : '' }}>ADMIN
+                                        </option>
+                                    </select>
+                                </div>
+                                {{-- END MODAL-BODY --}}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
                         </div>
                         </form>
                     </div>
