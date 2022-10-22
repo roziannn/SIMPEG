@@ -66,7 +66,7 @@ Route::get('/home-simpeg', [UserController::class,'widget']);
 
 //vaksin
 //daftar_penerima
-Route::get('/data-vaksin', [CovidController::class, 'index']);
+Route::get('/data-vaksin', [CovidController::class, 'index'])->middleware('auth');
 Route::get('/data-vaksin/form', [CovidController::class, 'add_daftar_penerima']);
 Route::post('/store-data-penerima-vaksin', [CovidController::class, 'store_penerima']);
 Route::get('/delete-penerima/{id}', [CovidController::class, 'delete_penerima']);
@@ -90,4 +90,8 @@ Route::match(['get', 'post'], '/edit-pengaduan{id}', [PengaduanController::class
 Route::post('/edit-pengaduan/{id}', [PengaduanController::class,'update']);
 
 
+//pengguna
+Route::get('/pengguna',[UserController::class, 'index']);
+Route::get('/delete-pengguna/{id}', [UserController::class, 'delete']);
+Route::post('/add-new-user', [UserController::class, 'store']);
 

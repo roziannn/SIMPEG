@@ -29,6 +29,13 @@ class UserController extends Controller
         return back()->with('loginError', 'login Failed!');
     }
 
+    public function index(){
+
+        $data = DB::table('users')->select('nama', 'roles', 'nip', 'id')->orderBy('nama', 'asc')->get();
+
+        return view('pengaturan.pengguna.index', compact('data'));
+    }
+
     public function widget(){
         return view('dashboard.index');
     }
@@ -61,7 +68,7 @@ class UserController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return redirect('/add-new-user')->with('successDelete', 'User has been deleted!');
+        return redirect('/pengguna')->with('successDelete', 'User has been deleted!');
     }
 
     public function edit(Request $request, $id){

@@ -52,8 +52,6 @@
                                             <tr>
                                                 <th style="text-align:center" rowspan="3">No</th>
                                                 <th style="text-align:center" rowspan="3">Unit Kerja</th>
-                                                <th style="text-align:center" colspan="2">Sasaran Vaksin <br> (Perorang)</th>
-                                                
                                             </tr>
                                             <tr>
                                                 <td  style="text-align:center" colspan="1">Sudah Vaksin</td>
@@ -67,7 +65,6 @@
                                                 <td>{{ $i++ }}</td>
                                                 <td>{{ $item->unitkerja_nama }}</td>
                                                 <td>{{ $item->sudah_vaksin }}</td>
-                                                <td></td>
                                             </tr>
                                             @endforeach
                                             <tr>

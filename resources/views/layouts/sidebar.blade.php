@@ -78,6 +78,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="add-new-user"><i class="fa fa-user"></i> Pengguna</a></li>
+            <li><a href="pengguna"><i class="fa fa-user"></i>Master Pengguna</a></li>
           </ul>
         </li> 
       </ul>  
