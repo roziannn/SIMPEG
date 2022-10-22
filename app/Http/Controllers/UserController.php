@@ -40,11 +40,6 @@ class UserController extends Controller
         return view('dashboard.index');
     }
 
-    public function add_user(){
-        $show_all = DB::table('users')->select('nama', 'roles', 'id', 'nip')->orderBy('nama', 'asc')->get();
-
-        return view('dashboard.user.add_user',['show_all'=>$show_all]);
-    }
 
     public function store(Request $request){
         $validatedDate = $request->validate([
@@ -61,7 +56,7 @@ class UserController extends Controller
         $request->accepts('session');
         session()->flash('success', 'Berhasil menambahkan user!');
 
-        return redirect('/add-new-user');
+        return redirect('/pengguna');
     }
 
     public function delete($id){

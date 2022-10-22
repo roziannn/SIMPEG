@@ -26,9 +26,6 @@ Route::get('/', function () {
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [UserController::class, 'authenticate']);
 
-//Regist source
-Route::get('/add-new-user', [UserController::class, 'add_user']);
-Route::post('/add-new-user', [UserController::class, 'store']);
 
 //logout
 Route::post('/logout', [UserController::class, 'logout']);
@@ -87,6 +84,7 @@ Route::post('/edit-pengaduan/{id}', [PengaduanController::class,'update']);
 
 //pengguna
 Route::get('/pengguna',[UserController::class, 'index']);
+Route::post('/tambah-pengguna', [UserController::class, 'store']);
 Route::get('/delete-pengguna/{id}', [UserController::class, 'delete']);
 Route::match(['get', 'post'], '/edit{id}', [UserController::class,'edit']);
 

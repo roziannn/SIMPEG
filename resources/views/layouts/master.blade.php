@@ -125,4 +125,16 @@
 </body>
 </html>
 
+<style>
+    .table,
+    .sidebar,
+    .pagination {
+        font-size: 13px;
+    }
+
+    .table {
+        text-align: center;
+    }
+</style>
+
 

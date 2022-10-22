@@ -8,18 +8,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.12.1/datatables.min.css" />
 @endpush
 
-<style>
-    .table,
-    .sidebar,
-    .pagination {
-        font-size: 13px;
-    }
-
-    .table {
-        text-align: center;
-    }
-</style>
-
 @section('content')
     <div class="row">
         <div class="col-md-12">
@@ -49,7 +37,7 @@
                     <div class="dataTables_wrapper form-inline dt-bootstrap no-footer">
                         <div class="table-responsive table-min-height" style="padding-bottom: 0px">
                             <div class="box-body">
-                                <table id="myTable" class="table table-stiped table-bordered ">
+                                <table id="myTable" class="table table-striped table-bordered ">
                                     <thead class="bg-gray disabled color-palette">
                                         <tr>
                                             <th width="5%" style="text-align: center">No</th>

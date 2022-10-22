@@ -9,18 +9,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.12.1/datatables.min.css" />
 @endpush
 
-<style>
-    .table,
-    .sidebar,
-    .pagination {
-        font-size: 13px;
-    }
-
-    .table {
-        text-align: center;
-    }
-</style>
-
 @section('content')
     <div class="row">
 
