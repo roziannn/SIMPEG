@@ -27,8 +27,7 @@
                         </div>
                     </div>
                 @endif
-
-
+                
                 <div class="box-body">
                     <form action="{{ url('edit-pegawai/' . $edit->id) }}" method="POST">
                         @csrf

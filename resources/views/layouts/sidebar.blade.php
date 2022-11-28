@@ -37,7 +37,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="/data-vaksin"><i class="fa fa fa-medkit"></i> Vaksin</a></li>
-            <li><a href="#"><i class="fa fa-list"></i> Riwayat Isoman</a></li>
+            {{-- <li><a href="#"><i class="fa fa-list"></i> Riwayat Isoman</a></li> --}}
           </ul>
         </li>
         <li>
@@ -50,11 +50,11 @@
             <i class="fa fa-book"></i> <span>Cuti</span>
           </a>
         </li>
-        <li>
+        {{-- <li>
           <a href="absen-masuk">
             <i class="fa fa-line-chart"></i> <span>Statistik</span>
           </a>
-        </li>
+        </li> --}}
         {{-- <li class="header">FILES</li> --}}
         <li class="treeview">
           <a href="#">
